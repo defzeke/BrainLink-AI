@@ -1,4 +1,8 @@
 import { Playfair_Display } from "next/font/google";
+import GroupOutlinedIcon from '@mui/icons-material/GroupOutlined';
+import PsychologyOutlinedIcon from '@mui/icons-material/PsychologyOutlined';
+import AdsClickOutlinedIcon from '@mui/icons-material/AdsClickOutlined';
+import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 
 const playfair = Playfair_Display({
     subsets: ["latin"],
@@ -13,16 +17,48 @@ export default function Values() {
 
             <span className="px-15 py-1 bg-gradient-to-r from-[#B32725] via-[#CA6C5B] to-[#E2B492] rounded mb-10"></span>
 
-            <div className="grid grid-cols-2 grid-rows-2 gap-6 w-350">
-                <div className="rounded-xl bg-white p-6">
-                    <div className="w-10 h-10 bg-black rounded"><img src=''/></div>
-                    <h5>Collaboration First</h5>
-                    <p>We believe learning is better together. Our platform encourages meaningful peer interactions.</p>    
+            <div className="grid grid-cols-2 grid-rows-2 gap-6 w-350 h-auto">
+
+                <div className="rounded-xl bg-white p-6 flex flex-row gap-5 shadow-sm hover:-translate-y-1 transition-transform duration-300">
+                    <div className="w-16 h-15 bg-[#EFD2D2] rounded-xl flex items-center justify-center">
+                        <GroupOutlinedIcon sx={{ fontSize: 35 }} className="text-[#B12020]"/>
+                    </div>
+                    <span className="flex flex-col gap-3">
+                        <h5 className={`${playfair.className} font-semibold text-[#333333] text-xl`}>Collaboration First</h5>
+                        <p className="text-[#666666]">We believe learning is better together. Our platform encourages meaningful peer interactions.</p>    
+                    </span>
                 </div>
 
-                <div className="rounded-xl bg-white p-6">Container 2</div>
-                <div className="rounded-xl bg-white p-6">Container 3</div>
-                <div className="rounded-xl bg-white p-6">Container 4</div>
+                <div className="rounded-xl bg-white p-6 flex flex-row gap-5 shadow-sm hover:-translate-y-1 transition-transform duration-300">
+                    <div className="w-16 h-15 bg-[#EFD2D2] rounded-xl flex items-center justify-center">
+                        <PsychologyOutlinedIcon sx={{ fontSize: 35 }} className="text-[#B12020]"/>
+                    </div>
+                    <span className="flex flex-col gap-3">
+                        <h5 className={`${playfair.className} font-semibold text-[#333333] text-xl`}>AI Enhancement</h5>
+                        <p className="text-[#666666]">Technology should amplify human potential, not replace it. Our AI assists, never dominates.</p>    
+                    </span>
+                </div>
+
+                <div className="rounded-xl bg-white p-6 flex flex-row gap-5 shadow-sm hover:-translate-y-1 transition-transform duration-300">
+                    <div className="w-16 h-15 bg-[#EFD2D2] rounded-xl flex items-center justify-center">
+                        <AdsClickOutlinedIcon sx={{ fontSize: 35 }} className="text-[#B12020]"/>
+                    </div>
+                    <span className="flex flex-col gap-3">
+                        <h5 className={`${playfair.className} font-semibold text-[#333333] text-xl`}>Focused Learning</h5>
+                        <p className="text-[#666666]">Every feature is designed to help students learn more effectively and efficiently.</p>    
+                    </span>
+                </div>
+
+                <div className="rounded-xl bg-white p-6 flex flex-row gap-5 shadow-sm hover:-translate-y-1 transition-transform duration-300">
+                    <div className="w-16 h-15 bg-[#EFD2D2] rounded-xl flex items-center justify-center">
+                        <FavoriteBorderOutlinedIcon sx={{ fontSize: 35 }} className="text-[#B12020]"/>
+                    </div>
+                    <span className="flex flex-col gap-3">
+                        <h5 className={`${playfair.className} font-semibold text-[#333333] text-xl`}>Student-Centered</h5>
+                        <p className="text-[#666666]">Built by educators and students, for students. Your success is our priority.</p>    
+                    </span>
+                </div>
+
             </div>
         </div>
     );
