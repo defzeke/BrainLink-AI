@@ -1,12 +1,17 @@
 "use client";
 import Hero from '../sections/FeaturesHero'
-import Blobs from '../ui/Blobs3'
+import MainFeats from '../sections/MainFeats'
+import MoreFeats from '../sections/MoreFeatures'
+import HowItWorks from '../sections/HowItWorks'
+
 
 export default function Features() {
     return (
         <div>
             <Hero />
-            <Blobs />
+            <MainFeats />
+            <MoreFeats />
+            <HowItWorks />
         </div>
     );
 }
