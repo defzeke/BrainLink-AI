@@ -1,5 +1,6 @@
 import { Playfair_Display } from "next/font/google";
 import BoltOutlinedIcon from '@mui/icons-material/BoltOutlined';
+import Blobs from '../ui/Blobs3'
 
 const playfair = Playfair_Display({
     subsets: ["latin"],
@@ -9,8 +10,9 @@ const playfair = Playfair_Display({
 
 export default function Hero() {
     return(
-         <>
-        <div className="min-h-[70vh] flex flex-col items-center justify-center text-center gap-5 mt-5">
+        <>
+        <Blobs />
+        <div className="min-h-[70vh] flex flex-col items-center justify-center text-center gap-5 mt-6">
             <span className="w-28 h-28 sm:w-32 sm:h-32 rounded-2xl bg-gradient-to-br from-[#B52424] to-[#D73A3A] flex items-center justify-center shadow-sm float-fast shadow-xl shadow-[#EED7D3]">
                 <BoltOutlinedIcon className="text-white" sx={{ fontSize: { xs: 56, sm: 80 } }} />
             </span>
