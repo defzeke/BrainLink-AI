@@ -11,7 +11,14 @@ type TabsContextValue = {
 const TabsContext = createContext<TabsContextValue | null>(null);
 
 export function TabsProvider({ children }: { children: ReactNode }) {
-	const [active, setActive] = useState<TabKey>("home");
+	const [active, setActiveState] = useState<TabKey>("home");
+
+	function setActive(tab: TabKey) {
+		setActiveState(tab);
+		if (typeof window !== "undefined") {
+			window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+		}
+	}
 
 	return (
 		<TabsContext.Provider value={{ active, setActive }}>
