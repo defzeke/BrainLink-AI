@@ -1,4 +1,8 @@
 import { Playfair_Display } from "next/font/google";
+import GroupOutlinedIcon from '@mui/icons-material/GroupOutlined';
+import EmojiObjectsOutlinedIcon from '@mui/icons-material/EmojiObjectsOutlined';
+import ElectricBoltOutlinedIcon from '@mui/icons-material/ElectricBoltOutlined';
+import DownloadOutlinedIcon from '@mui/icons-material/DownloadOutlined';
 
 const playfair = Playfair_Display({
     subsets: ["latin"],
@@ -16,17 +20,17 @@ export default function Features() {
 
                 <div className="rounded-xl bg-white p-6 flex flex-row gap-5 shadow-sm hover:-translate-y-1 transition-transform duration-300">
                     <div className="w-16 h-15 bg-[#EFD2D2] rounded-xl flex items-center justify-center">
-                        asd
+                        <GroupOutlinedIcon />
                     </div>
                     <span className="flex flex-col gap-3">
-                        <h5 className={`${playfair.className} font-semibold text-[#333333] text-xl`}>Collaboration First</h5>
+                        <h5 className={`${playfair.className} font-semibold text-[#333333] text-xl`}>Real-time Collaboration</h5>
                         <p className="text-[#666666]">We believe learning is better together. Our platform encourages meaningful peer interactions.</p>    
                     </span>
                 </div>
 
                 <div className="rounded-xl bg-white p-6 flex flex-row gap-5 shadow-sm hover:-translate-y-1 transition-transform duration-300">
                     <div className="w-16 h-15 bg-[#EFD2D2] rounded-xl flex items-center justify-center">
-                        asd
+                        <EmojiObjectsOutlinedIcon />
                     </div>
                     <span className="flex flex-col gap-3">
                         <h5 className={`${playfair.className} font-semibold text-[#333333] text-xl`}>AI Enhancement</h5>
@@ -36,7 +40,7 @@ export default function Features() {
 
                 <div className="rounded-xl bg-white p-6 flex flex-row gap-5 shadow-sm hover:-translate-y-1 transition-transform duration-300">
                     <div className="w-16 h-15 bg-[#EFD2D2] rounded-xl flex items-center justify-center">
-                        asd
+                        <ElectricBoltOutlinedIcon />
                     </div>
                     <span className="flex flex-col gap-3">
                         <h5 className={`${playfair.className} font-semibold text-[#333333] text-xl`}>Focused Learning</h5>
@@ -46,7 +50,7 @@ export default function Features() {
 
                 <div className="rounded-xl bg-white p-6 flex flex-row gap-5 shadow-sm hover:-translate-y-1 transition-transform duration-300">
                     <div className="w-16 h-15 bg-[#EFD2D2] rounded-xl flex items-center justify-center">
-                        asd
+                        <DownloadOutlinedIcon />
                     </div>
                     <span className="flex flex-col gap-3">
                         <h5 className={`${playfair.className} font-semibold text-[#333333] text-xl`}>Student-Centered</h5>
