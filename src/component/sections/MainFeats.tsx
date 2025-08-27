@@ -59,7 +59,7 @@ export default function Features() {
                     </span>
                 </div>
 
-            </div>a
+            </div>
         </div>
     );
 }
