@@ -22,10 +22,13 @@ export default function MoreFeats() {
             <span className="px-15 py-1 bg-gradient-to-r from-[#B32725] via-[#CA6C5B] to-[#E2B492] rounded mb-10"></span>
          
             <div className="flex flex-row gap-3">
-                <div className={`${cards}`}>
-                    <span className="p-3 bg-gradient-to-br from-[#B52323] to-[#D53838] w-16 h-16 rounded">
-                        
+                <div className={`${cards} flex items-center justify-center text-center flex-col`}>
+                    <span className="p-3 bg-gradient-to-br from-[#B52323] to-[#D53838] w-10 h-10 rounded-xl flex items-center justify-center">
+                        <ChatBubbleOutlineOutlinedIcon fontSize="medium" className="text-white"/>
                     </span>
+
+                    <h1 className={`${playfair.className}`}>Smart Chat System</h1>
+                    <p className="">Enhanced messaging with AI-powered features</p>
                 </div>  
 
             </div>
