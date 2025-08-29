@@ -13,7 +13,7 @@ const playfair = Playfair_Display({
 
 export default function MoreFeats() {
 
-    const cards = 'bg-white p-5 w-60 rounded-xl shadow-sm '
+    const cards = 'bg-white p-5 w-60 rounded-xl shadow-sm hover:-translate-y-1 transition-transform duration-300'
 
     return (
         <div className="flex flex-col min-h-screen items-center justify-center gap-3">
@@ -51,7 +51,7 @@ export default function MoreFeats() {
 
                 <div className={`${cards} flex items-center justify-center text-center flex-col gap-3 w-80 py-7`}>
                     <span className="p-3 bg-gradient-to-br from-[#B52323] to-[#D53838] w-15 h-15 rounded-xl flex items-center justify-center">
-                        <ShieldOutlinedIcon fontSize="large" className="text-white"/>
+                        <MenuBookOutlinedIcon fontSize="large" className="text-white"/>
                     </span>
 
                     <h1 className={`${playfair.className} text-lg font-semibold text-[#333333]`}>Multi-Subject Support</h1>
