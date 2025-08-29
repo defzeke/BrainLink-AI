@@ -13,7 +13,7 @@ const playfair = Playfair_Display({
 
 export default function MoreFeats() {
 
-    const cards = 'bg-white p-3 w-60 rounded-xl shadow-sm'
+    const cards = 'bg-white p-5 w-60 rounded-xl shadow-sm '
 
     return (
         <div className="flex flex-col min-h-screen items-center justify-center gap-3">
@@ -21,14 +21,41 @@ export default function MoreFeats() {
 
             <span className="px-15 py-1 bg-gradient-to-r from-[#B32725] via-[#CA6C5B] to-[#E2B492] rounded mb-10"></span>
          
-            <div className="flex flex-row gap-3">
-                <div className={`${cards} flex items-center justify-center text-center flex-col`}>
-                    <span className="p-3 bg-gradient-to-br from-[#B52323] to-[#D53838] w-10 h-10 rounded-xl flex items-center justify-center">
-                        <ChatBubbleOutlineOutlinedIcon fontSize="medium" className="text-white"/>
+            <div className="flex flex-row gap-6">
+                <div className={`${cards} flex items-center justify-center text-center flex-col gap-3 w-80 py-7`}>
+                    <span className="p-3 bg-gradient-to-br from-[#B52323] to-[#D53838] w-15 h-15 rounded-xl flex items-center justify-center">
+                        <ChatBubbleOutlineOutlinedIcon fontSize="large" className="text-white"/>
                     </span>
 
-                    <h1 className={`${playfair.className}`}>Smart Chat System</h1>
-                    <p className="">Enhanced messaging with AI-powered features</p>
+                    <h1 className={`${playfair.className} text-lg font-semibold text-[#333333]`}>Smart Chat System</h1>
+                    <p className="text-[#666666]">Enhanced messaging with AI-powered features</p>
+                </div>  
+
+                <div className={`${cards} flex items-center justify-center text-center flex-col gap-3 w-80 py-7`}>
+                    <span className="p-3 bg-gradient-to-br from-[#B52323] to-[#D53838] w-15 h-15 rounded-xl flex items-center justify-center">
+                        <AccessTimeOutlinedIcon fontSize="large" className="text-white"/>
+                    </span>
+
+                    <h1 className={`${playfair.className} text-lg font-semibold text-[#333333]`}>Session History</h1>
+                    <p className="text-[#666666]">Keep track of all your study sessions and progress</p>
+                </div>  
+
+                <div className={`${cards} flex items-center justify-center text-center flex-col gap-3 w-80 py-7`}>
+                    <span className="p-3 bg-gradient-to-br from-[#B52323] to-[#D53838] w-15 h-15 rounded-xl flex items-center justify-center">
+                        <ShieldOutlinedIcon fontSize="large" className="text-white"/>
+                    </span>
+
+                    <h1 className={`${playfair.className} text-lg font-semibold text-[#333333]`}>Secure & Private</h1>
+                    <p className="text-[#666666]">Your data and conversations are always protected</p>
+                </div>  
+
+                <div className={`${cards} flex items-center justify-center text-center flex-col gap-3 w-80 py-7`}>
+                    <span className="p-3 bg-gradient-to-br from-[#B52323] to-[#D53838] w-15 h-15 rounded-xl flex items-center justify-center">
+                        <ShieldOutlinedIcon fontSize="large" className="text-white"/>
+                    </span>
+
+                    <h1 className={`${playfair.className} text-lg font-semibold text-[#333333]`}>Multi-Subject Support</h1>
+                    <p className="text-[#666666]">Perfect for any subject or academic level</p>
                 </div>  
 
             </div>
