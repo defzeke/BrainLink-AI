@@ -1,4 +1,6 @@
 import { Playfair_Display } from "next/font/google";
+import PeopleAltOutlinedIcon from '@mui/icons-material/PeopleAltOutlined';
+import AutoAwesomeOutlinedIcon from '@mui/icons-material/AutoAwesomeOutlined';
 
 const playfair = Playfair_Display({
     subsets: ["latin"],
@@ -20,12 +22,16 @@ export default function Join() {
                 <label className="flex justify-start mb-2">Class Code</label>
                 <input 
                     type="text" 
-                    placeholder="Enter class code" 
+                    placeholder="Enter class code (e.g. ABC123)" 
                     className="border border-gray-300 rounded-md px-3 py-2 w-64 focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
 
-                <button type="submit">Join Room
-                    
+                <button type="submit" className="outline bg-red-400">
+                    <PeopleAltOutlinedIcon /> Join Room
+                </button>
+
+                <button type="submit" className="outline">
+                    <AutoAwesomeOutlinedIcon /> Create New Room
                 </button>
             </div>
         </div>

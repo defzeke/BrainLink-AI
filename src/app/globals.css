@@ -29,3 +29,21 @@ body {
     .float-slow, .float-slower, .float-slowest { animation: none !important; }
 }
 
+/* Hide scrollbar globally while keeping scroll functionality */
+/* For Webkit browsers (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+}
+
+/* For Firefox */
+html {
+    scrollbar-width: none;
+}
+
+/* Prevent overflow on body to eliminate scrollbar completely */
+.no-scroll {
+    overflow: hidden;
+    height: 100vh;
+}
+
