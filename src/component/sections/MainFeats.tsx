@@ -20,7 +20,7 @@ export default function Features() {
             <div className="grid grid-cols-2 grid-rows-2 gap-6 w-350 h-auto">
 
                 <div className={`${cards} bg-gradient-to-r from-[#FCEFE4] to-[#FEF7F1] outline-[#FAE2D0]`}>
-                    <div className="w-16 h-15 bg-[#EDC6BD] rounded-xl flex items-center justify-center">
+                    <div className="w-16 h-16 bg-[#EDC6BD] rounded-xl flex items-center justify-center">
                         <GroupOutlinedIcon className="text-[#B12020]"/>
                     </div>
                     <span className="flex flex-col gap-2">
@@ -30,7 +30,7 @@ export default function Features() {
                 </div>
 
                 <div className={`${cards} bg-gradient-to-r from-[#D8D8D8] to-[#EBEBEB] outline-[#B1B1B1]`}>
-                    <div className="w-16 h-15 bg-[#D1B4B4] rounded-xl flex items-center justify-center">
+                    <div className="w-16 h-16 bg-[#D1B4B4] rounded-xl flex items-center justify-center">
                         <EmojiObjectsOutlinedIcon className="text-[#B12020]"/>
                     </div>
                     <span className="flex flex-col gap-2">
@@ -40,17 +40,20 @@ export default function Features() {
                 </div>
 
                 <div className={`${cards} bg-gradient-to-r from-[#CBEDCB] to-[#E0F5E0] outline-[#9CDC9C]`}>
-                    <div className="w-16 h-15 bg-[#C7C4AA] rounded-xl flex items-center justify-center">
+                    <div className="w-16 h-16 bg-[#C7C4AA] rounded-xl flex items-center justify-center">
                         <ElectricBoltOutlinedIcon className="text-[#B12020]"/>
                     </div>
-                    <span className="flex flex-col gap-2">
-                        <h5 className={`${playfair.className} font-semibold text-[#333333] text-xl`}>Instant Quiz Generation</h5>
-                        <p className="text-[#666666]">Generate personalized quizzes with a simple /quiz command</p>    
-                    </span>
+                    <div className="flex flex-col">
+                        <span className="flex flex-col gap-2">
+                            <h5 className={`${playfair.className} font-semibold text-[#333333] text-xl`}>Instant Quiz Generation</h5>
+                            <p className="text-[#666666]">Generate personalized quizzes with a simple /quiz command</p>    
+                        </span>
+                    </div>
+                    
                 </div>
 
                 <div className={`${cards} bg-gradient-to-r from-[#EFD2D2] to-[#F6E8E8] outline-[#DC9D9D]`}>
-                    <div className="w-16 h-15 bg-[#E3B0B0] rounded-xl flex items-center justify-center">
+                    <div className="w-16 h-16 bg-[#E3B0B0] rounded-xl flex items-center justify-center">
                         <DownloadOutlinedIcon className="text-[#B12020]"/>
                     </div>
                     <div className="flex flex-col">
@@ -58,11 +61,24 @@ export default function Features() {
                             <h5 className={`${playfair.className} font-semibold text-[#333333] text-xl`}>Live Study Materials</h5>
                             <p className="text-[#666666]">Automatic reviewer generation from your study sessions</p>    
                         </span>
-                        <span className="-ml-10 mt-10">
-                            <ul>
-                                <TaskAltOutlinedIcon />
-                            </ul>
-                        </span>
+                        <ul className="flex flex-col gap-2 mt-4 -ml-20 mt-10">
+                            <li className="flex items-center gap-2">
+                                <TaskAltOutlinedIcon className="text-[#B12020]" fontSize="medium" />
+                                <span className="text-[#666666] text-base">Real-time note compilation</span>
+                            </li>
+                            <li className="flex items-center gap-2">
+                                <TaskAltOutlinedIcon className="text-[#B12020]" fontSize="medium" />
+                                <span className="text-[#666666] text-base">Key points extraction</span>
+                            </li>
+                            <li className="flex items-center gap-2">
+                                <TaskAltOutlinedIcon className="text-[#B12020]" fontSize="medium" />
+                                <span className="text-[#666666] text-base">Downloadable study guides</span>
+                            </li>
+                            <li className="flex items-center gap-2">
+                                <TaskAltOutlinedIcon className="text-[#B12020]" fontSize="medium" />
+                                <span className="text-[#666666] text-base">Topic-based organization</span>
+                            </li>
+                        </ul>
                     </div>
                 </div>
 
