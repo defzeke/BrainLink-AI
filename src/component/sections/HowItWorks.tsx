@@ -35,7 +35,7 @@ export default function How() {
                     </div>
                     <div className="flex-1">
                         <h3 className="text-xl font-bold text-[#333333] mb-2">Start Discussing</h3>
-                        <p className="text-gray-600">Chat with your classmates about the topics you're studying. PolyBot listens and takes notes.</p>
+                        <p className="text-gray-600">Chat with your classmates about the topics you're studying. BrainLink listens and takes notes.</p>
                     </div>
                 </div>
 
