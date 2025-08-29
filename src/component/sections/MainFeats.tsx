@@ -50,15 +50,19 @@ export default function Features() {
                 </div>
 
                 <div className={`${cards} bg-gradient-to-r from-[#EFD2D2] to-[#F6E8E8] outline-[#DC9D9D]`}>
+                    <div className="w-16 h-15 bg-[#E3B0B0] rounded-xl flex items-center justify-center">
+                        <DownloadOutlinedIcon className="text-[#B12020]"/>
+                    </div>
                     <div className="flex flex-col">
-                        <div className="w-16 h-15 bg-[#E3B0B0] rounded-xl flex items-center justify-center">
-                            <DownloadOutlinedIcon className="text-[#B12020]"/>
-                        </div>
                         <span className="flex flex-col gap-2">
                             <h5 className={`${playfair.className} font-semibold text-[#333333] text-xl`}>Live Study Materials</h5>
                             <p className="text-[#666666]">Automatic reviewer generation from your study sessions</p>    
                         </span>
-                        asdwasd
+                        <span className="-ml-10 mt-10">
+                            <ul>
+                                <TaskAltOutlinedIcon />
+                            </ul>
+                        </span>
                     </div>
                 </div>
 
