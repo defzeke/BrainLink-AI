@@ -6,7 +6,7 @@ import Story from '../sections/Story'
 
 export default function About() {
     return (
-        <div>
+        <div className='pt-16'>
             <Hero />
             <Mission />
             <Values />
