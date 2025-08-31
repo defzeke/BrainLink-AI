@@ -27,7 +27,8 @@ export default function Join() {
                 </div>
                 <button
                     type="submit"
-                    className="flex items-center justify-center w-full bg-red-300 hover:bg-red-400 text-white font-semibold py-3 rounded-lg mb-3 transition-colors duration-150"
+                    className="flex items-center justify-center w-full bg-[#E79A9A] hover:bg-red-400 text-white font-semibold py-3 rounded-lg mb-3 transition-colors duration-150"
+                    disabled
                 >
                     <PeopleAltOutlinedIcon className="mr-2" /> Join Room
                 </button>
