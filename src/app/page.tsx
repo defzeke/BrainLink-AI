@@ -1,10 +1,10 @@
 "use client";
-import HomeTab from "../component/tabs/Home";
-import AboutTab from "../component/tabs/About";
-import FeaturesTab from "../component/tabs/Features";
-import StudyRoomTab from "../component/tabs/StudyRoom";
-import Blobs from "../component/ui/Blobs";
-import { useTabs } from "../component/context/TabsContext";
+import HomeTab from "../components/tabs/Home";
+import AboutTab from "../components/tabs/About";
+import FeaturesTab from "../components/tabs/Features";
+import StudyRoomTab from "../components/tabs/StudyRoom";
+import Blobs from "../components/ui/Blobs";
+import { useTabs } from "../components/context/TabsContext";
 
 export default function Main() {
   const { active } = useTabs();
