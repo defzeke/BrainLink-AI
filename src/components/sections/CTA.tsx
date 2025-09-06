@@ -19,10 +19,15 @@ export default function Cta() {
         if (!ref) return;
         const observer = new window.IntersectionObserver(
             ([entry]) => {
-                if (entry.)
-            }
-        )
-    })
+                if (entry.isIntersecting) {
+                    setisVisible(true);
+                    observer.disconnect();
+                }
+            },
+            {threshold: 0.5};
+        );
+        
+    }, [])
 
     return (
         <section className="w-full px-4 sm:px-6 lg:px-8">
