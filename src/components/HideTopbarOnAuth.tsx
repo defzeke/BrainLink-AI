@@ -5,7 +5,7 @@ import Topbar from "./sections/Topbar";
 
 export default function HideTopbarOnAuth({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
-  const hideTopbar = pathname === "/SignIn" || pathname === "/login";
+  const hideTopbar = pathname === "/register" || pathname === "/login";
   return (
     <>
       {!hideTopbar && <Topbar />}
