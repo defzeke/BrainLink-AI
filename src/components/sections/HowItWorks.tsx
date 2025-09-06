@@ -29,8 +29,8 @@ export default function How() {
     }, []);
 
     return(
-        <div className="flex flex-col min-h-screen items-center justify-center gap-3">
-            <h1 ref={worksRef} className={`${playfair.className} text-4xl font-bold text-[#333333] ${isVisible ? "fade-in-up" : "opacity-0"}`}>How It Works</h1>
+        <div ref={worksRef} className={`flex flex-col min-h-screen items-center justify-center gap-3 ${isVisible ? "fade-in-up" : "opacity-0"}`}>
+            <h1 className={`${playfair.className} text-4xl font-bold text-[#333333]`}>How It Works</h1>
 
             <span className="px-15 py-1 bg-gradient-to-r from-[#B32725] via-[#CA6C5B] to-[#E2B492] rounded mb-10"></span>
             
