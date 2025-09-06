@@ -38,7 +38,7 @@ export default function Values() {
 
             <span ref={valuesRef} className={`px-15 py-1 bg-gradient-to-r from-[#B32725] via-[#CA6C5B] to-[#E2B492] rounded mb-10 ${isVisible ? "fade-in-up" : "opacity-0"}`}></span>
 
-            <div ref={valuesRef} className={`grid grid-cols-2 grid-rows-2 gap-6 w-350 h-auto ${isVisible ? "fade-in-up" : }`}>
+            <div ref={valuesRef} className={`grid grid-cols-2 grid-rows-2 gap-6 w-350 h-auto ${isVisible ? "fade-in-up" : "opacity-0"}`}>
 
                 <div className="rounded-xl bg-white p-6 flex flex-row gap-5 shadow-sm hover:-translate-y-1 transition-transform duration-300">
                     <div className="w-16 h-15 bg-[#EFD2D2] rounded-xl flex items-center justify-center">

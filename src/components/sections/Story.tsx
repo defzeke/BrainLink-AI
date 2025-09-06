@@ -1,4 +1,5 @@
 import { Playfair_Display } from "next/font/google";
+import { useRef, use } from "react";
 
 const playfair = Playfair_Display({
     subsets: ["latin"],
