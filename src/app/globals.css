@@ -23,6 +23,21 @@ body {
     50% { transform: translateY(-16px); }
 }
 
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp 1s cubic-bezier(0.23, 1, 0.32, 1) both;
+}
+
 .float-slow { animation: float-blob 3s ease-in-out infinite; }
 .float-fast { animation: float-blob 3s ease-in-out infinite; }
 .float-slower { animation: float-blob 4s ease-in-out infinite; }
