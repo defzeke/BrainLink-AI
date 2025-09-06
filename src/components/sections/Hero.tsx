@@ -10,17 +10,9 @@ const playfair = Playfair_Display({
 export default function Hero() {
 
     const butts = 'px-10 p-3 cursor-pointer font-bold rounded-lg transition-all duration-300 ease-out [will-change:transform,box-shadow] hover:scale-105'
-
-    const [animate, setAnimate] = useState(false);
-
-    useEffect(() => {
-        setAnimate(false);
-        const timeout = setTimeout(() => setAnimate(true), 10);
-        return () => clearTimeout(timeout);
-    }, []);
         
     return (
-        <div className={`min-h-[70vh] w-full flex flex-col items-center justify-center px-4 text-center mt-5 ${animate ? 'animate-fade-in-up' : ''}`}>
+        <div className={`min-h-[70vh] w-full flex flex-col items-center justify-center px-4 text-center mt-5`}>
             <img
                 className="h-auto w-24 sm:w-32 md:w-40 lg:w-100"
                 src="/brainlink.svg"
