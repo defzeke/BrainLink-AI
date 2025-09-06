@@ -22,8 +22,16 @@ export default function Features() {
         const ref = featRef.current;
         if (!ref) return;
         const observer = new window.IntersectionObserver(
-            ({})
-        )
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    setIsVisible(true);
+                    observer.disconnect();
+                }
+            },
+            { threshold: 0.5 }
+        );
+        observer.observe(ref)
+        return () => observer.disconnect()
     }, []);
 
     return(
