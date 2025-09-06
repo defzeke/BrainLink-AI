@@ -25,7 +25,7 @@ export default function Hero({ visible }: {visible: boolean}) {
     return (
         <div 
         ref={rootRef}
-        className={`min-h-[70vh] w-full flex flex-col items-center justify-center px-4 text-center mt-5 ${show} ? "opacity-100 translate-y-0" : "opacity-0 translate-y-40"`}>
+        className={`min-h-[70vh] w-full flex flex-col items-center justify-center px-4 text-center mt-5 transition-all duration-300 ${show ? "opacity-0 translate-y-40" : "opacity-100 translate-y-0"}`}>
             <img
                 className="h-auto w-24 sm:w-32 md:w-40 lg:w-100"
                 src="/brainlink.svg"
