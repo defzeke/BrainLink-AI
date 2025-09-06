@@ -20,7 +20,9 @@ export default function Values() {
         const ref = valuesRef.current;
         if (!ref) return;
         const observer = new window.IntersectionObserver(
-            ([entry]) => 
+            ([entry]) => {
+                
+            }
         )
     })
 
