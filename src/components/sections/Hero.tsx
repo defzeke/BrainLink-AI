@@ -11,8 +11,6 @@ export default function Hero() {
 
     const butts = 'px-10 p-3 cursor-pointer font-bold rounded-lg transition-all duration-300 ease-out [will-change:transform,box-shadow] hover:scale-105'
 
-    
-
     return (
         <div className="min-h-[70vh] w-full flex flex-col items-center justify-center px-4 text-center mt-5">
             <img
