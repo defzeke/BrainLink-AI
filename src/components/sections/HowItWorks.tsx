@@ -1,4 +1,5 @@
 import { Playfair_Display } from "next/font/google";
+import { useRef, useState, useEffect } from "react";
 
 const playfair = Playfair_Display({
     subsets: ["latin"],
@@ -7,6 +8,9 @@ const playfair = Playfair_Display({
 });
 
 export default function How() {
+
+    const works
+
     return(
         <div className="flex flex-col min-h-screen items-center justify-center gap-3">
             <h1 className={`${playfair.className} text-4xl font-bold text-[#333333]`}>How It Works</h1>
