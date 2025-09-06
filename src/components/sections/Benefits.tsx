@@ -60,7 +60,7 @@ export default function Benefits() {
                 className={`px-15 py-1 bg-gradient-to-r from-[#B32725] via-[#CA6C5B] to-[#E2B492] rounded mb-10 ${isSpanVisible ? "fade-in-up" : "opacity-0"}`}
             ></span>
 
-            <div className="flex flex-row gap-6 ">
+            <div className={`flex flex-row gap-6 ${isVisible ? "fade-in-up" : "opacity-0"}`}>
                 <div className={`${boxes} outline-[#FAE3D1] bg-gradient-to-r from-[#FAE3D1] to-[#FEF7F1] flex items-center justify-center p-8 text-center`}>
                     <div className="flex flex-col items-center justify-center gap-4">
                         <img src='/realtime.svg' alt='Realtime' className="w-16 h-16"/>
