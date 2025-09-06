@@ -155,7 +155,7 @@ body {
     }
 
     10% {
-        opacity: 10;
+        opacity: 1;
         transform: translateY(0);
     }
 }
