@@ -14,7 +14,15 @@ export default function Story() {
 
     useEffect(() => {
         const ref = storyRef.current;
-        
+        if (!ref) return;
+        const observer = new window.IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    setIsVisible(true);
+                    observer.disconnect();
+                }
+            }
+        )
     }, []);
 
     return(
