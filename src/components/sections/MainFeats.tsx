@@ -68,7 +68,7 @@ export default function Features() {
                     </div>
                 </div>
 
-                <div className={`${cards} bg-gradient-to-r from-[#D8D8D8] to-[#EBEBEB] outline-[#B1B1B1]`}>
+                <div ref={featRef} className={`${cards} bg-gradient-to-r from-[#D8D8D8] to-[#EBEBEB] outline-[#B1B1B1] ${isVisible ? "fade-in-up" : "opacity-0"}`}>
                     <div className="w-16 h-16 bg-[#D1B4B4] rounded-xl flex items-center justify-center">
                         <EmojiObjectsOutlinedIcon className="text-[#B12020]" fontSize="large"/>
                     </div>
@@ -98,7 +98,7 @@ export default function Features() {
                     </div>
                 </div>
 
-                <div className={`${cards} bg-gradient-to-r from-[#CBEDCB] to-[#E0F5E0] outline-[#9CDC9C]`}>
+                <div ref={featRef} className={`${cards} bg-gradient-to-r from-[#CBEDCB] to-[#E0F5E0] outline-[#9CDC9C]`}>
                     <div className="w-16 h-16 bg-[#C7C4AA] rounded-xl flex items-center justify-center">
                         <ElectricBoltOutlinedIcon className="text-[#B12020]" fontSize="large"/>
                     </div>
