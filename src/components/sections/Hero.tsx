@@ -13,7 +13,7 @@ export default function Hero() {
 
 
     return (
-        <div className={`min-h-[70vh] w-full flex flex-col items-center justify-center px-4 text-center mt-5`}>
+        <div className={`min-h-[70vh] w-full flex flex-col items-center justify-center px-4 text-center mt-5 fade-in-up`}>
             <img
                 className="h-auto w-24 sm:w-32 md:w-40 lg:w-100"
                 src="/brainlink.svg"
