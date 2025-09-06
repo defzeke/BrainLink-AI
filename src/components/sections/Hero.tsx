@@ -7,7 +7,7 @@ const playfair = Playfair_Display({
     weight: ["400", "700"],
 });
 
-export default function Hero() {
+export default function Hero({ visible }: {visible: boolean}) {
 
     const butts = 'px-10 p-3 cursor-pointer font-bold rounded-lg transition-all duration-300 ease-out [will-change:transform,box-shadow] hover:scale-105'
         
@@ -20,12 +20,12 @@ export default function Hero() {
         } else {
             setShow(false);
         }
-    },[visible]);
+    }, [visible]);
 
     return (
         <div 
         ref={rootRef}
-        className={`min-h-[70vh] w-full flex flex-col items-center justify-center px-4 text-center mt-5`}>
+        className={`min-h-[70vh] w-full flex flex-col items-center justify-center px-4 text-center mt-5 ${show}`}>
             <img
                 className="h-auto w-24 sm:w-32 md:w-40 lg:w-100"
                 src="/brainlink.svg"
