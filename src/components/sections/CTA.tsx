@@ -1,7 +1,7 @@
 'use client';
 import { Playfair_Display } from "next/font/google";
 import AutoAwesomeOutlinedIcon from '@mui/icons-material/AutoAwesomeOutlined';
-const { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from "react";
 
 const playfair = Playfair_Display({
     subsets: ["latin"],
@@ -11,6 +11,7 @@ const playfair = Playfair_Display({
 
 export default function Cta() {
 
+    const ctaRef = useRef<HTMLDivElement>(null);
     const [isVisible, setisVisible] = useRef<HTMLDivElement>(null);
 
     return (
