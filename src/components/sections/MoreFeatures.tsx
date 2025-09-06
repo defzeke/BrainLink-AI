@@ -20,6 +20,16 @@ export default function MoreFeats() {
 
     useEffect(() => {
         const ref = featsRef.current;
+        if (!ref) return;
+        const observer = new window.IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    setIsVisible(true);
+                    observer.disconnect();
+                }
+            },
+            { threshold: 0.5 }
+        );
          
     }), [];
 
