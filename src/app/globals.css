@@ -154,7 +154,14 @@ body {
         transform: translateY(40px);
     }
 
-    10
+    10% {
+        opacity: 10;
+        transform: translateY(0);
+    }
+}
+
+@animate-fade-in-up {
+    animation: fadeInUp 0.7s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 
