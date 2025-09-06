@@ -3,6 +3,7 @@ import GroupOutlinedIcon from '@mui/icons-material/GroupOutlined';
 import PsychologyOutlinedIcon from '@mui/icons-material/PsychologyOutlined';
 import AdsClickOutlinedIcon from '@mui/icons-material/AdsClickOutlined';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
+import { useRef, useEffect, useState } from "react";
 
 const playfair = Playfair_Display({
     subsets: ["latin"],
@@ -11,6 +12,9 @@ const playfair = Playfair_Display({
 });
 
 export default function Values() {
+
+    const valuesRef = 
+
     return (
         <div className="flex flex-col min-h-screen items-center justify-center gap-3">
             <h1 className={`${playfair.className} text-4xl font-bold text-[#333333]`}>Our Values</h1>

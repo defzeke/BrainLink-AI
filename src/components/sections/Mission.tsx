@@ -29,11 +29,8 @@ export default function Mission() {
     }, []); 
 
     return (
-        <div className="w-full px-2 sm:px-4 lg:px-6 mt-12 md:mt-60 flex justify-center">
-            <div
-                ref={missionRef}
-                className={`w-full max-w-[1600px] xl:max-w-[1800px] rounded-xl bg-gradient-to-br from-[#FFFEFE] via-[#FBE9D9] to-[#F7D7BB] ring-1 ring-black/5 shadow-sm px-8 sm:px-14 py-6 md:py-8 lg:py-8 ${isVisible ? "fade-in-up" : "opacity-0"}`}
-            >
+    <div ref={missionRef} className={`w-full px-2 sm:px-4 lg:px-6 mt-12 md:mt-60 flex justify-center ${isVisible ? "fade-in-up" : "opacity-0"}`}>
+            <div className="w-full max-w-[1600px] xl:max-w-[1800px] rounded-xl bg-gradient-to-br from-[#FFFEFE] via-[#FBE9D9] to-[#F7D7BB] ring-1 ring-black/5 shadow-sm px-8 sm:px-14 py-6 md:py-8 lg:py-8">
                 <h2 className={`${playfair.className} text-center text-stone-800 text-4xl md:text-4xl font-bold`}>Our Mission</h2>
 
                 <p className="mt-4 text-center text-[#676767] text-lg md:text-xl max-w-5xl mx-auto">
@@ -62,6 +59,6 @@ export default function Mission() {
                     </div>
                 </div>
             </div>
-        </div>
+    </div>
     );
 }
