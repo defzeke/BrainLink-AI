@@ -31,10 +31,10 @@ export default function Benefits() {
     }, []);
 
     return(
-        <div className="flex flex-col min-h-screen items-center justify-center -mt-10 gap-3">
+        <div ref={headingRef} className="flex flex-col min-h-screen items-center justify-center -mt-10 gap-3 ${isVisible ? "fade-in-up" : "opacity-0"}">
             <h1
-                ref={headingRef}
-                className={`${playfair.className} text-4xl font-bold text-[#333333] ${isVisible ? "fade-in-up" : "opacity-0"}`}
+                
+                className={`${playfair.className} text-4xl font-bold text-[#333333]`}
             >Why Choose BrainLink?</h1>
 
             <span
