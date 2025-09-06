@@ -24,13 +24,14 @@ export default function Cta() {
                     observer.disconnect();
                 }
             },
-            {threshold: 0.5};
+            {threshold: 0.5}
         );
-        
-    }, [])
+        observer.observe(ref)
+        return () => observer.disconnect();
+    }, []);
 
     return (
-        <section className="w-full px-4 sm:px-6 lg:px-8">
+        <section className={`w-full px-4 sm:px-6 lg:px-8`}>
             <div
                 className="mx-auto max-w-7xl rounded-3xl bg-gradient-to-br from-[#FFFEFD] to-[#F7D8BC] ring-1 ring-black/5 shadow-sm text-center px-6 sm:px-12 py-10 md:py-12 lg:py-14"
             >
