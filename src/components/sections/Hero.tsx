@@ -9,9 +9,8 @@ const playfair = Playfair_Display({
 
 export default function Hero({ visible }: {visible: boolean}) {
 
-    const butts = 'px-10 p-3 cursor-pointer font-bold rounded-lg transition-all duration-300 ease-out [will-change:transform,box-shadow] hover:scale-105'
-        
-    const rootRef =useRef<HTMLDivElement>(null);
+    const butts = 'px-10 p-3 cursor-pointer font-bold rounded-lg transition-all duration-300 ease-out [will-change:transform,box-shadow] hover:scale-105';
+    const rootRef = useRef<HTMLDivElement>(null);
     const [show, setShow] = useState(false);
 
     useEffect(() => {
@@ -23,9 +22,10 @@ export default function Hero({ visible }: {visible: boolean}) {
     }, [visible]);
 
     return (
-        <div 
-        ref={rootRef}
-        className={`min-h-[70vh] w-full flex flex-col items-center justify-center px-4 text-center mt-5 transition-all duration-300 ${show ? "opacity-0 translate-y-40" : "opacity-100 translate-y-0"}`}>
+        <div
+            ref={rootRef}
+            className={`min-h-[70vh] w-full flex flex-col items-center justify-center px-4 text-center mt-5 transition-all duration-700 ${show ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+        >
             <img
                 className="h-auto w-24 sm:w-32 md:w-40 lg:w-100"
                 src="/brainlink.svg"
