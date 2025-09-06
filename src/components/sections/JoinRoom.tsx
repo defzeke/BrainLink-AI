@@ -10,7 +10,7 @@ const playfair = Playfair_Display({
 
 export default function Join() {
     return (
-        <div className="fixed inset-0 flex flex-col items-center justify-center">
+        <div className="fixed inset-0 flex flex-col items-center justify-center fade-in-up">
             <div className="flex flex-col items-center bg-white py-10 px-8 w-[420px] rounded-2xl shadow-sm border border-[#f3eaea]">
                 <span className="mb-4">
                     <img src='/brainlink.svg' draggable='false' />
