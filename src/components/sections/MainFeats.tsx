@@ -4,6 +4,7 @@ import EmojiObjectsOutlinedIcon from '@mui/icons-material/EmojiObjectsOutlined';
 import ElectricBoltOutlinedIcon from '@mui/icons-material/ElectricBoltOutlined';
 import DownloadOutlinedIcon from '@mui/icons-material/DownloadOutlined';
 import TaskAltOutlinedIcon from '@mui/icons-material/TaskAltOutlined';
+import { useRef, useEffect, useState } from "react";
 
 const playfair = Playfair_Display({
     subsets: ["latin"],
@@ -14,6 +15,8 @@ const playfair = Playfair_Display({
 export default function Features() {
 
     const cards ='rounded-xl bg-white p-6 flex flex-row gap-5 shadow-sm hover:-translate-y-1 transition-transform duration-300 outline p-15'
+    const featRef = useRef<HTMLDivElement>(null);
+    const 
 
     return(
         <div className="flex flex-col items-center justify-center gap-3 mt-60">
