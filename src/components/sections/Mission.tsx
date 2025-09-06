@@ -13,7 +13,7 @@ export default function Mission() {
     const [ isVisible, setIsVisible ] = useState(false)
 
     useEffect(() => {
-        const ref = missionRef
+        const ref = missionRef.current;
         if (!ref) return;
         const observer = new window.IntersectionObserver(
             ([entry]) => {
