@@ -18,10 +18,14 @@ export default function Mission() {
         const observer = new window.IntersectionObserver(
             ([entry]) => {
                 if (entry.isIntersecting) {
-                    setIsVisible
+                    setIsVisible(true);
+                    observer.disconnect();
                 }
-            }
-        )
+            },
+            { threshold: 0.5 }
+        );
+        observer.observe(ref);
+        return () => observer.disconnect();
     }, []); 
 
     return (
