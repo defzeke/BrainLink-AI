@@ -12,7 +12,9 @@ export default function Benefits() {
 
     const boxes = 'w-100 h-70 bg-white rounded-lg shadow-sm outline transition-all duration-400 hover:-translate-y-2'
     const headingRef = useRef<HTMLHeadingElement>(null);
+    const spanRef = useRef<HTMLSpanElement>(null);
     const [isVisible, setIsVisible] = useState(false);
+    const [isSpanVisible, setIsSpanVisible] = useState(false);
 
     useEffect(() => {
         const ref = headingRef.current;
@@ -30,6 +32,22 @@ export default function Benefits() {
         return () => observer.disconnect();
     }, []);
 
+    useEffect(() => {
+        const ref = spanRef.current;
+        if (!ref) return;
+        const observer = new window.IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    setIsSpanVisible(true);
+                    observer.disconnect();
+                }
+            },
+            { threshold: 0.5 }
+        );
+        observer.observe(ref);
+        return () => observer.disconnect();
+    }, []);
+
     return(
         <div className="flex flex-col min-h-screen items-center justify-center -mt-10 gap-3">
             <h1
@@ -37,9 +55,12 @@ export default function Benefits() {
                 className={`${playfair.className} text-4xl font-bold text-[#333333] ${isVisible ? "fade-in-up" : "opacity-0"}`}
             >Why Choose BrainLink?</h1>
 
-            <span className="px-15 py-1 bg-gradient-to-r from-[#B32725] via-[#CA6C5B] to-[#E2B492] rounded mb-10"></span>
+            <span
+                ref={spanRef}
+                className={`px-15 py-1 bg-gradient-to-r from-[#B32725] via-[#CA6C5B] to-[#E2B492] rounded mb-10 ${isSpanVisible ? "fade-in-up" : "opacity-0"}`}
+            ></span>
 
-            <div className="flex flex-row gap-6">
+            <div className="flex flex-row gap-6 ">
                 <div className={`${boxes} outline-[#FAE3D1] bg-gradient-to-r from-[#FAE3D1] to-[#FEF7F1] flex items-center justify-center p-8 text-center`}>
                     <div className="flex flex-col items-center justify-center gap-4">
                         <img src='/realtime.svg' alt='Realtime' className="w-16 h-16"/>
