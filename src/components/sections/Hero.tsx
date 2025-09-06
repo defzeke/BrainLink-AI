@@ -1,5 +1,5 @@
 import { Playfair_Display } from "next/font/google";
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 
 const playfair = Playfair_Display({
     subsets: ["latin"],
@@ -12,7 +12,15 @@ export default function Hero() {
     const butts = 'px-10 p-3 cursor-pointer font-bold rounded-lg transition-all duration-300 ease-out [will-change:transform,box-shadow] hover:scale-105'
         
     const rootRef =useRef<HTMLDivElement>(null);
-    const [show, setS]
+    const [show, setShow] = useState(false);
+
+    useEffect(() => {
+        if (visible) {
+            setShow(true);
+        } else {
+            setShow(false);
+        }
+    },[visible]);
 
     return (
         <div 
