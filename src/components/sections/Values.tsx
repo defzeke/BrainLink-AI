@@ -30,7 +30,7 @@ export default function Values() {
         );
         observer.observe(ref)
         return () => observer.disconnect()
-    }, [])
+    }, []);
 
     return (
         <div className="flex flex-col min-h-screen items-center justify-center gap-3">
