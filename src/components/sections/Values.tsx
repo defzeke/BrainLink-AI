@@ -16,9 +16,13 @@ export default function Values() {
     const valuesRef = useRef<HTMLDivElement>(null);
     const [isVisible, setIsVisible] = useState(false);
 
-    useEffect(() => 
-    
-    )
+    useEffect(() => {
+        const ref = valuesRef.current;
+        if (!ref) return;
+        const observer = new window.IntersectionObserver(
+            ([entry]) => 
+        )
+    })
 
     return (
         <div className="flex flex-col min-h-screen items-center justify-center gap-3">
