@@ -35,12 +35,12 @@ export default function MoreFeats() {
     }), [];
 
     return (
-        <div className="flex flex-col min-h-screen items-center justify-center gap-3">
-            <h1 ref={featsRef} className={`${playfair.className} text-4xl font-bold text-[#333333] ${isVisible ? "fade-in-up" : "opacity-0"}`}>More Amazing Features</h1>
+        <div ref={featsRef} className={`flex flex-col min-h-screen items-center justify-center gap-3 ${isVisible ? "fade-in-up" : "opacity-0"}`}>
+            <h1  className={`${playfair.className} text-4xl font-bold text-[#333333] `}>More Amazing Features</h1>
 
-            <span ref={featsRef} className={`px-15 py-1 bg-gradient-to-r from-[#B32725] via-[#CA6C5B] to-[#E2B492] rounded mb-10 ${isVisible ? "fade-in-up" : "opacity-0"}`}></span>
+            <span className={`px-15 py-1 bg-gradient-to-r from-[#B32725] via-[#CA6C5B] to-[#E2B492] rounded mb-10`}></span>
          
-            <div ref={featsRef} className={`flex flex-row gap-6 ${isVisible ? "fade-in-up" : "opacity-0"}`}>
+            <div className={`flex flex-row gap-6`}>
                 <div className={`${cards} flex items-center justify-center text-center flex-col gap-3 w-80 py-7`}>
                     <span className="p-3 bg-gradient-to-br from-[#B52323] to-[#D53838] w-15 h-15 rounded-xl flex items-center justify-center">
                         <ChatBubbleOutlineOutlinedIcon fontSize="large" className="text-white"/>

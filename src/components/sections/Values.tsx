@@ -33,8 +33,8 @@ export default function Values() {
     }, []);
 
     return (
-        <div className="flex flex-col min-h-screen items-center justify-center gap-3">
-            <h1 ref={valuesRef} className={`${playfair.className} text-4xl font-bold text-[#333333] ${isVisible ? "fade-in-up" : "opacity-0"}`}>Our Values</h1>
+        <div ref={valuesRef} className="flex flex-col min-h-screen items-center justify-center gap-3">
+            <h1  className={`${playfair.className} text-4xl font-bold text-[#333333] ${isVisible ? "fade-in-up" : "opacity-0"}`}>Our Values</h1>
 
             <span ref={valuesRef} className={`px-15 py-1 bg-gradient-to-r from-[#B32725] via-[#CA6C5B] to-[#E2B492] rounded mb-10 ${isVisible ? "fade-in-up" : "opacity-0"}`}></span>
 
