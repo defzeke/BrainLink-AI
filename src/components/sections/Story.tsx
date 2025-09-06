@@ -29,7 +29,7 @@ export default function Story() {
     }, []);
 
     return(
-        <div ref={storyRef} className={`p-10 bg-gradient-to-r from-[#FDF7F1] to-[#FEFBF8] rounded-xl max-w-4xl mx-auto shadow-lg ${isVisible ? "fade"}`}>
+        <div ref={storyRef} className={`p-10 bg-gradient-to-r from-[#FDF7F1] to-[#FEFBF8] rounded-xl max-w-4xl mx-auto shadow-lg ${isVisible ? "fade-in-up" : "opacity-0"}`}>
             <h2 className={`${playfair.className} text-center text-3xl md:text-4xl font-bold text-gray-900 mb-6`}>Our Story</h2>
             <div className="flex flex-col gap-4 text-left">
                 <p className="text-[#6D6D6D] text-lg leading-8">Brainlink was born from a simple observation: students learn better when they learn together. During the pandemic, we saw how isolation affected learning outcomes and student engagement.</p>
