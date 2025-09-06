@@ -56,8 +56,8 @@ export default function Benefits() {
             >Why Choose BrainLink?</h1>
 
             <span
-                ref={spanRef}
-                className={`px-15 py-1 bg-gradient-to-r from-[#B32725] via-[#CA6C5B] to-[#E2B492] rounded mb-10 ${isSpanVisible ? "fade-in-up" : "opacity-0"}`}
+                ref={headingRef}
+                className={`px-15 py-1 bg-gradient-to-r from-[#B32725] via-[#CA6C5B] to-[#E2B492] rounded mb-10 ${isVisible ? "fade-in-up" : "opacity-0"}`}
             ></span>
 
             <div className={`flex flex-row gap-6 ${isVisible ? "fade-in-up" : "opacity-0"}`}>
