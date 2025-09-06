@@ -12,7 +12,12 @@ const playfair = Playfair_Display({
 export default function Cta() {
 
     const ctaRef = useRef<HTMLDivElement>(null);
-    const [isVisible, setisVisible] = useRef<HTMLDivElement>(null);
+    const [isVisible, setisVisible] = useState(false)
+
+    useEffect(() => {
+        const ref = ctaRef.current;
+        
+    })
 
     return (
         <section className="w-full px-4 sm:px-6 lg:px-8">
