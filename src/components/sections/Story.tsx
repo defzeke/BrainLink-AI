@@ -1,5 +1,5 @@
 import { Playfair_Display } from "next/font/google";
-import { useRef, use } from "react";
+import { useRef, useEffect, useState } from "react";
 
 const playfair = Playfair_Display({
     subsets: ["latin"],
@@ -8,6 +8,15 @@ const playfair = Playfair_Display({
 });
 
 export default function Story() {
+
+    const storyRef = useRef<HTMLDivElement>(null);
+    const [ isVisible, setIsVisible ] = useState(false)
+
+    useEffect(() => {
+        const ref = storyRef.current;
+        
+    }, []);
+
     return(
         <div className="p-10 bg-gradient-to-r from-[#FDF7F1] to-[#FEFBF8] rounded-xl max-w-4xl mx-auto shadow-lg">
             <h2 className={`${playfair.className} text-center text-3xl md:text-4xl font-bold text-gray-900 mb-6`}>Our Story</h2>
