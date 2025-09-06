@@ -35,7 +35,7 @@ export default function Features() {
     }, []);
 
     return(
-        <div className="flex flex-col items-center justify-center gap-3 mt-60">
+        <div ref={featRef} className={`flex flex-col items-center justify-center gap-3 mt-60 ${isVisible ? "fade-in-up" : "opacity-0"}`}>
             <div className="grid grid-cols-2 grid-rows-2 gap-6 w-350 h-auto">
 
                 <div className={`${cards} bg-gradient-to-r from-[#FCEFE4] to-[#FEF7F1] outline-[#FAE2D0]`}>
@@ -68,7 +68,7 @@ export default function Features() {
                     </div>
                 </div>
 
-                <div ref={featRef} className={`${cards} bg-gradient-to-r from-[#D8D8D8] to-[#EBEBEB] outline-[#B1B1B1] ${isVisible ? "fade-in-up" : "opacity-0"}`}>
+                <div className={`${cards} bg-gradient-to-r from-[#D8D8D8] to-[#EBEBEB] outline-[#B1B1B1]`}>
                     <div className="w-16 h-16 bg-[#D1B4B4] rounded-xl flex items-center justify-center">
                         <EmojiObjectsOutlinedIcon className="text-[#B12020]" fontSize="large"/>
                     </div>
