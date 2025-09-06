@@ -9,7 +9,14 @@ const playfair = Playfair_Display({
 
 export default function How() {
 
-    const works
+    const worksRef = useRef<HTMLDivElement>(null);
+    const [ isVisible, setIsVisible ] = useState(false);
+
+    useEffect(() => {
+        const ref = worksRef.current;
+        if (!ref) return;
+        
+    })
 
     return(
         <div className="flex flex-col min-h-screen items-center justify-center gap-3">
