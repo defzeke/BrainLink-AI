@@ -1,4 +1,5 @@
 import { Playfair_Display } from "next/font/google";
+import { useRef, useEffect, useState} from "react";
 
 const playfair = Playfair_Display({
     subsets: ["latin"],
@@ -7,6 +8,10 @@ const playfair = Playfair_Display({
 });
 
 export default function Mission() {
+
+    const missionRef = useRef<HTMLDivElement>(null);
+    const [ isVisible, setIsVisible ] = 
+
     return (
     <div className="w-full px-2 sm:px-4 lg:px-6 mt-12 md:mt-60 flex justify-center">
             <div className="w-full max-w-[1600px] xl:max-w-[1800px] rounded-xl bg-gradient-to-br from-[#FFFEFE] via-[#FBE9D9] to-[#F7D7BB] ring-1 ring-black/5 shadow-sm px-8 sm:px-14 py-6 md:py-8 lg:py-8">
