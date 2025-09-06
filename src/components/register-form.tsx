@@ -17,7 +17,7 @@ export function RegisterForm({
 							<div className="flex flex-col items-center text-center">
 								<h1 className="text-2xl font-bold">Create your account</h1>
 								<p className="text-muted-foreground text-balance">
-									Register for your Acme Inc account
+									Register for your BrainLink account
 								</p>
 							</div>
 							<div className="grid gap-3">
