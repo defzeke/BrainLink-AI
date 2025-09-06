@@ -10,7 +10,13 @@ const playfair = Playfair_Display({
 export default function Mission() {
 
     const missionRef = useRef<HTMLDivElement>(null);
-    const [ isVisible, setIsVisible ] = 
+    const [ isVisible, setIsVisible ] = useState(false)
+
+    useEffect(() => {
+        const ref = missionRef
+        if (!ref) return;
+        const observer = 
+    }, []); 
 
     return (
     <div className="w-full px-2 sm:px-4 lg:px-6 mt-12 md:mt-60 flex justify-center">
