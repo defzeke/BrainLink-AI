@@ -37,7 +37,7 @@ export default function Benefits() {
                 className={`${playfair.className} text-4xl font-bold text-[#333333] ${isVisible ? "fade-in-up" : "opacity-0"}`}
             >Why Choose BrainLink?</h1>
 
-            <span className="px-15 py-1 bg-gradient-to-r from-[#B32725] via-[#CA6C5B] to-[#E2B492] rounded mb-10"></span>
+            <span ref={headingRef} className="px-15 py-1 bg-gradient-to-r from-[#B32725] via-[#CA6C5B] to-[#E2B492] rounded mb-10"></span>
 
             <div className="flex flex-row gap-6">
                 <div className={`${boxes} outline-[#FAE3D1] bg-gradient-to-r from-[#FAE3D1] to-[#FEF7F1] flex items-center justify-center p-8 text-center`}>
