@@ -1,5 +1,4 @@
 import { Playfair_Display } from "next/font/google";
-import { useRef, useEffect, useState } from 'react';
 
 const playfair = Playfair_Display({
     subsets: ["latin"],
@@ -9,15 +8,11 @@ const playfair = Playfair_Display({
 
 export default function Hero() {
 
-    const butts = 'px-10 p-3 cursor-pointer font-bold rounded-lg transition-all duration-300 ease-out [will-change:transform,box-shadow] hover:scale-105';
-    const [mounted, setMounted] = useState(false);
+    const butts = 'px-10 p-3 cursor-pointer font-bold rounded-lg transition-all duration-300 ease-out [will-change:transform,box-shadow] hover:scale-105'
 
-    useEffect(() => {
-        setMounted(true);
-    }, []);
 
     return (
-        <div className={`min-h-[70vh] w-full flex flex-col items-center justify-center px-4 text-center mt-5${mounted ? ' fade-in-up' : ''}`}>
+        <div className={`min-h-[70vh] w-full flex flex-col items-center justify-center px-4 text-center mt-5 fade-in-up`}>
             <img
                 className="h-auto w-24 sm:w-32 md:w-40 lg:w-100"
                 src="/brainlink.svg"
