@@ -21,10 +21,15 @@ export default function Values() {
         if (!ref) return;
         const observer = new window.IntersectionObserver(
             ([entry]) => {
-                
-            }
-        )
-    })
+                if (entry.isIntersecting) {
+                    setIsVisible(true)
+                    observer.disconnect()
+                }
+            },
+            { threshold: 0.5 }
+        );
+        ()
+    }, [])
 
     return (
         <div className="flex flex-col min-h-screen items-center justify-center gap-3">
