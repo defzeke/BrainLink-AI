@@ -1,6 +1,4 @@
 
-
-
 import { useRef, useEffect, useState } from "react";
 import { Playfair_Display } from "next/font/google";
 
@@ -18,20 +16,20 @@ export default function Benefits() {
     const [isVisible, setIsVisible] = useState(false);
 
     useEffect(() => {
-    const ref = headingRef.current;
-    if (!ref) return;
-    const observer = new window.IntersectionObserver(
+        const ref = headingRef.current;
+        if (!ref) return;
+        const observer = new window.IntersectionObserver(
             ([entry]) => {
                 if (entry.isIntersecting) {
                     setIsVisible(true);
                     observer.disconnect();
-
-                },
-            );
-            observer.observe(ref);
-            return () => observer.disconnect();
-        }, []);
+                }
+            },
+            { threshold: 0.5 }
+        );
+        observer.observe(ref);
         return () => observer.disconnect();
+    }, []);
     }, []);
 
     return (
