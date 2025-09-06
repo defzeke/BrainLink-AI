@@ -16,6 +16,7 @@ export default function Cta() {
 
     useEffect(() => {
         const ref = ctaRef.current;
+        if (!ref) return;
         
     })
 
