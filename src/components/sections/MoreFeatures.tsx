@@ -15,7 +15,13 @@ const playfair = Playfair_Display({
 export default function MoreFeats() {
 
     const cards = 'bg-white p-5 w-60 rounded-xl shadow-sm hover:-translate-y-1 transition-transform duration-300'
-    const featsRef
+    const featsRef = useRef<HTMLDivElement>(null);
+    const [ isVisible, setIsVisible] = useState(false);
+
+    useEffect(() => {
+        const ref = featsRef.current;
+         
+    }), [];
 
     return (
         <div className="flex flex-col min-h-screen items-center justify-center gap-3">
