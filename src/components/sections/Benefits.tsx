@@ -12,9 +12,7 @@ export default function Benefits() {
 
     const boxes = 'w-100 h-70 bg-white rounded-lg shadow-sm outline transition-all duration-400 hover:-translate-y-2'
     const headingRef = useRef<HTMLHeadingElement>(null);
-    const spanRef = useRef<HTMLSpanElement>(null);
     const [isVisible, setIsVisible] = useState(false);
-    const [isSpanVisible, setIsSpanVisible] = useState(false);
 
     useEffect(() => {
         const ref = headingRef.current;
@@ -23,22 +21,6 @@ export default function Benefits() {
             ([entry]) => {
                 if (entry.isIntersecting) {
                     setIsVisible(true);
-                    observer.disconnect();
-                }
-            },
-            { threshold: 0.5 }
-        );
-        observer.observe(ref);
-        return () => observer.disconnect();
-    }, []);
-
-    useEffect(() => {
-        const ref = spanRef.current;
-        if (!ref) return;
-        const observer = new window.IntersectionObserver(
-            ([entry]) => {
-                if (entry.isIntersecting) {
-                    setIsSpanVisible(true);
                     observer.disconnect();
                 }
             },
