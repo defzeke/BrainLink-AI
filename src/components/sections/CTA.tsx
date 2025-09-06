@@ -31,7 +31,7 @@ export default function Cta() {
     }, []);
 
     return (
-        <section className={`w-full px-4 sm:px-6 lg:px-8`}>
+        <section ref={ctaRef} className={`w-full px-4 sm:px-6 lg:px-8 ${isVisible ? "fade-in-up" : "opacity-0"}`}>
             <div
                 className="mx-auto max-w-7xl rounded-3xl bg-gradient-to-br from-[#FFFEFD] to-[#F7D8BC] ring-1 ring-black/5 shadow-sm text-center px-6 sm:px-12 py-10 md:py-12 lg:py-14"
             >
