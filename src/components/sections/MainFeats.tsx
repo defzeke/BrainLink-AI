@@ -98,7 +98,7 @@ export default function Features() {
                     </div>
                 </div>
 
-                <div ref={featRef} className={`${cards} bg-gradient-to-r from-[#CBEDCB] to-[#E0F5E0] outline-[#9CDC9C]`}>
+                <div className={`${cards} bg-gradient-to-r from-[#CBEDCB] to-[#E0F5E0] outline-[#9CDC9C]`}>
                     <div className="w-16 h-16 bg-[#C7C4AA] rounded-xl flex items-center justify-center">
                         <ElectricBoltOutlinedIcon className="text-[#B12020]" fontSize="large"/>
                     </div>
