@@ -15,6 +15,15 @@ export default function How() {
     useEffect(() => {
         const ref = worksRef.current;
         if (!ref) return;
+        const observer = new window.IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    setIsVisible(true);
+                    observer.disconnect();
+                }
+            },
+            { threshold: 0.5 }
+        );
         
     })
 
