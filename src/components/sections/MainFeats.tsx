@@ -16,7 +16,15 @@ export default function Features() {
 
     const cards ='rounded-xl bg-white p-6 flex flex-row gap-5 shadow-sm hover:-translate-y-1 transition-transform duration-300 outline p-15'
     const featRef = useRef<HTMLDivElement>(null);
-    const 
+    const [ isVisible, setIsVisible ] = useState(false);
+
+    useEffect(() => {
+        const ref = featRef.current;
+        if (!ref) return;
+        const observer = new window.IntersectionObserver(
+            ({})
+        )
+    }, []);
 
     return(
         <div className="flex flex-col items-center justify-center gap-3 mt-60">
