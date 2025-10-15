@@ -39,120 +39,120 @@ export default function Features() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 w-full max-w-[350px] md:max-w-[700px] lg:max-w-[900px] h-auto">
 
                 <div className={`${cards} bg-gradient-to-r from-[#FCEFE4] to-[#FEF7F1] outline-[#FAE2D0]`}>
-                    <div className="w-16 h-16 bg-[#EDC6BD] rounded-xl flex items-center justify-center">
-                        <GroupOutlinedIcon className="text-[#B12020]" fontSize="large"/>
+                    <div className="w-14 h-14 sm:w-16 sm:h-16 bg-[#EDC6BD] rounded-xl flex items-center justify-center flex-shrink-0">
+                        <GroupOutlinedIcon className="text-[#B12020]" sx={{ fontSize: { xs: 30, sm: 40 } }}/>
                     </div>
                     <div className="flex flex-col">
                         <span className="flex flex-col gap-2">
-                            <h5 className={`${playfair.className} font-semibold text-[#333333] text-xl`}>Real-time Collaboration</h5>
-                            <p className="text-[#666666]">Study with classmates in beautiful, synchronized study rooms</p>    
+                            <h5 className={`${playfair.className} font-semibold text-[#333333] text-lg sm:text-xl`}>Real-time Collaboration</h5>
+                            <p className="text-[#666666] text-sm sm:text-base">Study with classmates in beautiful, synchronized study rooms</p>    
                         </span>
-                        <ul className="flex flex-col gap-2 mt-4 -ml-20 mt-10">
+                        <ul className="flex flex-col gap-2 mt-4 md:-ml-20 mt-6 md:mt-10">
                             <li className="flex items-center gap-2">
-                                <TaskAltOutlinedIcon className="text-[#B12020]" fontSize="medium" />
-                                <span className="text-[#666666] text-base">Live chat with classmates</span>
+                                <TaskAltOutlinedIcon className="text-[#B12020]" sx={{ fontSize: { xs: 18, sm: 24 } }} />
+                                <span className="text-[#666666] text-sm sm:text-base">Live chat with classmates</span>
                             </li>
                             <li className="flex items-center gap-2">
-                                <TaskAltOutlinedIcon className="text-[#B12020]" fontSize="medium" />
-                                <span className="text-[#666666] text-base">Real-time message synchronization</span>
+                                <TaskAltOutlinedIcon className="text-[#B12020]" sx={{ fontSize: { xs: 18, sm: 24 } }} />
+                                <span className="text-[#666666] text-sm sm:text-base">Real-time message synchronization</span>
                             </li>
                             <li className="flex items-center gap-2">
-                                <TaskAltOutlinedIcon className="text-[#B12020]" fontSize="medium" />
-                                <span className="text-[#666666] text-base">See who's online and active</span>
+                                <TaskAltOutlinedIcon className="text-[#B12020]" sx={{ fontSize: { xs: 18, sm: 24 } }} />
+                                <span className="text-[#666666] text-sm sm:text-base">See who's online and active</span>
                             </li>
                             <li className="flex items-center gap-2">
-                                <TaskAltOutlinedIcon className="text-[#B12020]" fontSize="medium" />
-                                <span className="text-[#666666] text-base">Join rooms with simple class codes</span>
+                                <TaskAltOutlinedIcon className="text-[#B12020]" sx={{ fontSize: { xs: 18, sm: 24 } }} />
+                                <span className="text-[#666666] text-sm sm:text-base">Join rooms with simple class codes</span>
                             </li>
                         </ul>
                     </div>
                 </div>
 
                 <div className={`${cards} bg-gradient-to-r from-[#D8D8D8] to-[#EBEBEB] outline-[#B1B1B1]`}>
-                    <div className="w-16 h-16 bg-[#D1B4B4] rounded-xl flex items-center justify-center">
-                        <EmojiObjectsOutlinedIcon className="text-[#B12020]" fontSize="large"/>
+                    <div className="w-14 h-14 sm:w-16 sm:h-16 bg-[#D1B4B4] rounded-xl flex items-center justify-center flex-shrink-0">
+                        <EmojiObjectsOutlinedIcon className="text-[#B12020]" sx={{ fontSize: { xs: 30, sm: 40 } }}/>
                     </div>
                     <div className="flex flex-col">
                         <span className="flex flex-col gap-2">
-                            <h5 className={`${playfair.className} font-semibold text-[#333333] text-xl`}>AI Study Assistant</h5>
-                            <p className="text-[#666666]">BrainLink helps create reviewers and explains complex concepts</p>    
+                            <h5 className={`${playfair.className} font-semibold text-[#333333] text-lg sm:text-xl`}>AI Study Assistant</h5>
+                            <p className="text-[#666666] text-sm sm:text-base">BrainLink helps create reviewers and explains complex concepts</p>    
                         </span>
-                        <ul className="flex flex-col gap-2 mt-4 -ml-20 mt-10">
+                        <ul className="flex flex-col gap-2 mt-4 md:-ml-20 mt-6 md:mt-10">
                             <li className="flex items-center gap-2">
-                                <TaskAltOutlinedIcon className="text-[#B12020]" fontSize="medium" />
-                                <span className="text-[#666666] text-base">Intelligent Q&A assistance</span>
+                                <TaskAltOutlinedIcon className="text-[#B12020]" sx={{ fontSize: { xs: 18, sm: 24 } }} />
+                                <span className="text-[#666666] text-sm sm:text-base">Intelligent Q&A assistance</span>
                             </li>
                             <li className="flex items-center gap-2">
-                                <TaskAltOutlinedIcon className="text-[#B12020]" fontSize="medium" />
-                                <span className="text-[#666666] text-base">Concept explanation and clarification</span>
+                                <TaskAltOutlinedIcon className="text-[#B12020]" sx={{ fontSize: { xs: 18, sm: 24 } }} />
+                                <span className="text-[#666666] text-sm sm:text-base">Concept explanation and clarification</span>
                             </li>
                             <li className="flex items-center gap-2">
-                                <TaskAltOutlinedIcon className="text-[#B12020]" fontSize="medium" />
-                                <span className="text-[#666666] text-base">Automatic study material generation</span>
+                                <TaskAltOutlinedIcon className="text-[#B12020]" sx={{ fontSize: { xs: 18, sm: 24 } }} />
+                                <span className="text-[#666666] text-sm sm:text-base">Automatic study material generation</span>
                             </li>
                             <li className="flex items-center gap-2">
-                                <TaskAltOutlinedIcon className="text-[#B12020]" fontSize="medium" />
-                                <span className="text-[#666666] text-base">Personalized learning recommendations</span>
+                                <TaskAltOutlinedIcon className="text-[#B12020]" sx={{ fontSize: { xs: 18, sm: 24 } }} />
+                                <span className="text-[#666666] text-sm sm:text-base">Personalized learning recommendations</span>
                             </li>
                         </ul>
                     </div>
                 </div>
 
                 <div className={`${cards} bg-gradient-to-r from-[#CBEDCB] to-[#E0F5E0] outline-[#9CDC9C]`}>
-                    <div className="w-16 h-16 bg-[#C7C4AA] rounded-xl flex items-center justify-center">
-                        <ElectricBoltOutlinedIcon className="text-[#B12020]" fontSize="large"/>
+                    <div className="w-14 h-14 sm:w-16 sm:h-16 bg-[#C7C4AA] rounded-xl flex items-center justify-center flex-shrink-0">
+                        <ElectricBoltOutlinedIcon className="text-[#B12020]" sx={{ fontSize: { xs: 30, sm: 40 } }}/>
                     </div>
                     <div className="flex flex-col">
                         <span className="flex flex-col gap-2">
-                            <h5 className={`${playfair.className} font-semibold text-[#333333] text-xl`}>Instant Quiz Generation</h5>
-                            <p className="text-[#666666]">Generate personalized quizzes with a simple /quiz command</p>    
+                            <h5 className={`${playfair.className} font-semibold text-[#333333] text-lg sm:text-xl`}>Instant Quiz Generation</h5>
+                            <p className="text-[#666666] text-sm sm:text-base">Generate personalized quizzes with a simple /quiz command</p>    
                         </span>
-                        <ul className="flex flex-col gap-2 mt-4 -ml-20 mt-10">
+                        <ul className="flex flex-col gap-2 mt-4 md:-ml-20 mt-6 md:mt-10">
                             <li className="flex items-center gap-2">
-                                <TaskAltOutlinedIcon className="text-[#B12020]" fontSize="medium" />
-                                <span className="text-[#666666] text-base">Command-based quiz creation</span>
+                                <TaskAltOutlinedIcon className="text-[#B12020]" sx={{ fontSize: { xs: 18, sm: 24 } }} />
+                                <span className="text-[#666666] text-sm sm:text-base">Command-based quiz creation</span>
                             </li>
                             <li className="flex items-center gap-2">
-                                <TaskAltOutlinedIcon className="text-[#B12020]" fontSize="medium" />
-                                <span className="text-[#666666] text-base">Questions based on your discussions</span>
+                                <TaskAltOutlinedIcon className="text-[#B12020]" sx={{ fontSize: { xs: 18, sm: 24 } }} />
+                                <span className="text-[#666666] text-sm sm:text-base">Questions based on your discussions</span>
                             </li>
                             <li className="flex items-center gap-2">
-                                <TaskAltOutlinedIcon className="text-[#B12020]" fontSize="medium" />
-                                <span className="text-[#666666] text-base">Multiple difficulty levels</span>
+                                <TaskAltOutlinedIcon className="text-[#B12020]" sx={{ fontSize: { xs: 18, sm: 24 } }} />
+                                <span className="text-[#666666] text-sm sm:text-base">Multiple difficulty levels</span>
                             </li>
                             <li className="flex items-center gap-2">
-                                <TaskAltOutlinedIcon className="text-[#B12020]" fontSize="medium" />
-                                <span className="text-[#666666] text-base">Immediate feedback and explanations</span>
+                                <TaskAltOutlinedIcon className="text-[#B12020]" sx={{ fontSize: { xs: 18, sm: 24 } }} />
+                                <span className="text-[#666666] text-sm sm:text-base">Immediate feedback and explanations</span>
                             </li>
                         </ul>
                     </div>
                 </div>
 
                 <div className={`${cards} bg-gradient-to-r from-[#EFD2D2] to-[#F6E8E8] outline-[#DC9D9D]`}>
-                    <div className="w-16 h-16 bg-[#E3B0B0] rounded-xl flex items-center justify-center">
-                        <DownloadOutlinedIcon className="text-[#B12020]" fontSize="large"/>
+                    <div className="w-14 h-14 sm:w-16 sm:h-16 bg-[#E3B0B0] rounded-xl flex items-center justify-center flex-shrink-0">
+                        <DownloadOutlinedIcon className="text-[#B12020]" sx={{ fontSize: { xs: 30, sm: 40 } }}/>
                     </div>
                     <div className="flex flex-col">
                         <span className="flex flex-col gap-2">
-                            <h5 className={`${playfair.className} font-semibold text-[#333333] text-xl`}>Live Study Materials</h5>
-                            <p className="text-[#666666]">Automatic reviewer generation from your study sessions</p>    
+                            <h5 className={`${playfair.className} font-semibold text-[#333333] text-lg sm:text-xl`}>Live Study Materials</h5>
+                            <p className="text-[#666666] text-sm sm:text-base">Automatic reviewer generation from your study sessions</p>    
                         </span>
-                        <ul className="flex flex-col gap-2 mt-4 -ml-20 mt-10">
+                        <ul className="flex flex-col gap-2 mt-4 md:-ml-20 mt-6 md:mt-10">
                             <li className="flex items-center gap-2">
-                                <TaskAltOutlinedIcon className="text-[#B12020]" fontSize="medium" />
-                                <span className="text-[#666666] text-base">Real-time note compilation</span>
+                                <TaskAltOutlinedIcon className="text-[#B12020]" sx={{ fontSize: { xs: 18, sm: 24 } }} />
+                                <span className="text-[#666666] text-sm sm:text-base">Real-time note compilation</span>
                             </li>
                             <li className="flex items-center gap-2">
-                                <TaskAltOutlinedIcon className="text-[#B12020]" fontSize="medium" />
-                                <span className="text-[#666666] text-base">Key points extraction</span>
+                                <TaskAltOutlinedIcon className="text-[#B12020]" sx={{ fontSize: { xs: 18, sm: 24 } }} />
+                                <span className="text-[#666666] text-sm sm:text-base">Key points extraction</span>
                             </li>
                             <li className="flex items-center gap-2">
-                                <TaskAltOutlinedIcon className="text-[#B12020]" fontSize="medium" />
-                                <span className="text-[#666666] text-base">Downloadable study guides</span>
+                                <TaskAltOutlinedIcon className="text-[#B12020]" sx={{ fontSize: { xs: 18, sm: 24 } }} />
+                                <span className="text-[#666666] text-sm sm:text-base">Downloadable study guides</span>
                             </li>
                             <li className="flex items-center gap-2">
-                                <TaskAltOutlinedIcon className="text-[#B12020]" fontSize="medium" />
-                                <span className="text-[#666666] text-base">Topic-based organization</span>
+                                <TaskAltOutlinedIcon className="text-[#B12020]" sx={{ fontSize: { xs: 18, sm: 24 } }} />
+                                <span className="text-[#666666] text-sm sm:text-base">Topic-based organization</span>
                             </li>
                         </ul>
                     </div>
