@@ -24,7 +24,7 @@ export default function Topbar() {
                 {/* Logo */}
                 <div className="flex items-center">
                     <img src='/brainlink.svg' alt="Brainlink Logo" className="w-16 sm:w-24 h-auto cursor-pointer" draggable='false'/>
-                    <span className="font-bold text-lg sm:text-xl text-[#B32222] cursor-pointer">BrainLink</span>
+                    <span className="hidden sm:block font-bold text-lg sm:text-xl text-[#B32222] cursor-pointer">BrainLink</span>
                 </div>
 
                 {/* Desktop Navigation */}
