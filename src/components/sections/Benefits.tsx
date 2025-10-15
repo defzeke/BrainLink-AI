@@ -10,7 +10,7 @@ const playfair = Playfair_Display({
 
 export default function Benefits() {
 
-    const boxes = 'w-100 h-70 bg-white rounded-lg shadow-sm outline transition-all duration-400 hover:-translate-y-2'
+    const boxes = 'w-full md:w-80 lg:w-100 min-h-60 md:h-70 bg-white rounded-lg shadow-sm outline transition-all duration-400 hover:-translate-y-2'
     const headingRef = useRef<HTMLHeadingElement>(null);
     const [isVisible, setIsVisible] = useState(false);
 
@@ -32,14 +32,14 @@ export default function Benefits() {
 
     return(
         <div ref={headingRef} className={`flex flex-col min-h-screen items-center justify-center -mt-10 gap-3 ${isVisible ? "fade-in-up" : "opacity-0"}`}>
-            <h1 className={`${playfair.className} text-4xl font-bold text-[#333333]`}
+            <h1 className={`${playfair.className} text-4xl font-bold text-[#333333] text-center`}
             >Why Choose BrainLink?</h1>
 
             <span
                 className={`px-15 py-1 bg-gradient-to-r from-[#B32725] via-[#CA6C5B] to-[#E2B492] rounded mb-10`}
             ></span>
 
-            <div className={`flex flex-row gap-6`}>
+            <div className={`flex flex-col md:flex-row gap-6`}>
                 <div className={`${boxes} outline-[#FAE3D1] bg-gradient-to-r from-[#FAE3D1] to-[#FEF7F1] flex items-center justify-center p-8 text-center`}>
                     <div className="flex flex-col items-center justify-center gap-4">
                         <img src='/realtime.svg' alt='Realtime' className="w-16 h-16"/>
