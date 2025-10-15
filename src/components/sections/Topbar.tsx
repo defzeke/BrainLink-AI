@@ -79,14 +79,6 @@ export default function Topbar() {
                 </div>
             </div>
 
-            {/* Mobile Menu Overlay */}
-            {isMenuOpen && (
-                <div 
-                    className="fixed inset-0 bg-black bg-opacity-50 z-40 md:hidden"
-                    onClick={() => setIsMenuOpen(false)}
-                />
-            )}
-
             {/* Mobile Menu - Side Drawer */}
             <div className={`fixed top-0 left-0 h-full w-64 bg-[#F9F5F1] shadow-2xl transform transition-transform duration-300 ease-in-out z-50 md:hidden ${isMenuOpen ? 'translate-x-0' : '-translate-x-full'}`}>
                 <div className="flex flex-col h-full">
