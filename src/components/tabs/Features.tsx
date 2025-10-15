@@ -7,7 +7,7 @@ import HowItWorks from '../sections/HowItWorks'
 
 export default function Features() {
     return (
-        <div className='pt-16'>
+        <div className='pt-16 space-y-20 md:space-y-32'>
             <Hero />
             <MainFeats />
             <MoreFeats />
