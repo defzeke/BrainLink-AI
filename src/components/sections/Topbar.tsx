@@ -21,8 +21,17 @@ export default function Topbar() {
     <div className="fixed top-0 inset-x-0 z-50 w-full">
         
             <div className="w-full h-16 bg-[#F9F5F1] outline-1 outline-[#ECEEF0] shadow-none flex items-center justify-between px-6">
-                {/* Logo */}
-                <div className="flex items-center">
+                {/* Mobile Hamburger - Left side on mobile */}
+                <button 
+                    className="md:hidden p-2 text-[#666666] hover:text-[#B32222] transition-colors"
+                    onClick={() => setIsMenuOpen(!isMenuOpen)}
+                    aria-label="Toggle menu"
+                >
+                    {isMenuOpen ? <CloseIcon /> : <MenuIcon />}
+                </button>
+
+                {/* Logo - Center on mobile, left on desktop */}
+                <div className="flex items-center md:flex-none flex-1 md:flex-initial justify-center md:justify-start">
                     <img src='/brainlink.svg' alt="Brainlink Logo" className="w-16 sm:w-24 h-auto cursor-pointer" draggable='false'/>
                     <span className="hidden sm:block font-bold text-lg sm:text-xl text-[#B32222] cursor-pointer">BrainLink</span>
                 </div>
@@ -69,14 +78,8 @@ export default function Topbar() {
                         className="px-4 py-2 rounded-xl bg-[#B32222] text-white text-sm font-semibold shadow-sm transition-all duration-500 ease-out hover:shadow-lg hover:drop-shadow-[0_6px_12px_rgba(179,34,34,0.25)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B32222]/40 cursor-pointer">Sign Up</button>
                 </div>
 
-                {/* Mobile Hamburger */}
-                <button 
-                    className="md:hidden p-2 text-[#666666] hover:text-[#B32222] transition-colors"
-                    onClick={() => setIsMenuOpen(!isMenuOpen)}
-                    aria-label="Toggle menu"
-                >
-                    {isMenuOpen ? <CloseIcon /> : <MenuIcon />}
-                </button>
+                {/* Spacer for mobile to balance layout */}
+                <div className="md:hidden w-10"></div>
             </div>
 
             {/* Mobile Menu */}
