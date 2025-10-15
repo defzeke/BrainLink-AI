@@ -14,7 +14,7 @@ const playfair = Playfair_Display({
 
 export default function Features() {
 
-    const cards ='rounded-xl bg-white p-6 flex flex-row gap-5 shadow-sm hover:-translate-y-1 transition-transform duration-300 outline p-15'
+    const cards ='rounded-xl bg-white p-4 sm:p-6 flex flex-col md:flex-row gap-4 sm:gap-5 shadow-sm hover:-translate-y-1 transition-transform duration-300 outline p-15'
     const featRef = useRef<HTMLDivElement>(null);
     const [ isVisible, setIsVisible ] = useState(false);
 
@@ -35,8 +35,8 @@ export default function Features() {
     }, []);
 
     return(
-        <div ref={featRef} className={`flex flex-col items-center justify-center gap-3 mt-60 ${isVisible ? "fade-in-up" : "opacity-0"}`}>
-            <div className="grid grid-cols-2 grid-rows-2 gap-6 w-350 h-auto">
+        <div ref={featRef} className={`flex flex-col items-center justify-center gap-3 mt-20 md:mt-60 px-4 sm:px-6 ${isVisible ? "fade-in-up" : "opacity-0"}`}>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 w-full max-w-[350px] md:max-w-[700px] lg:max-w-[900px] h-auto">
 
                 <div className={`${cards} bg-gradient-to-r from-[#FCEFE4] to-[#FEF7F1] outline-[#FAE2D0]`}>
                     <div className="w-16 h-16 bg-[#EDC6BD] rounded-xl flex items-center justify-center">
