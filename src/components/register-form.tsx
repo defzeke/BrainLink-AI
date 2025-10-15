@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 export function RegisterForm({
 	className,
@@ -10,6 +11,10 @@ export function RegisterForm({
 }: React.ComponentProps<"div">) {
 	return (
 		<div className={cn("flex flex-col gap-6", className)} {...props}>
+			<a href="/" className="flex items-center gap-2 hover:opacity-70 transition-opacity w-fit">
+				<ArrowBackIcon />
+				<span className="text-base font-medium">Back to Home</span>
+			</a>
 			<Card className="overflow-hidden p-0">
 				<CardContent className="grid p-0 md:grid-cols-2">
 					<form className="p-6 md:p-8">
