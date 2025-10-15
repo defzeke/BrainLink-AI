@@ -11,7 +11,14 @@ export function LoginForm({
 }: React.ComponentProps<"div">) {
   return (
     <div className={cn("flex flex-col gap-6", className)} {...props}>
-      <ClearIcon className="bg-gray-300"/>
+      <div className="flex items-center gap-3">
+        <div className="bg-gray-300 p-3 rounded-full cursor-pointer hover:bg-gray-400 transition-colors">
+          <ClearIcon className="text-gray-700" fontSize="large"/>
+        </div>
+        <a href="/" className="text-lg font-medium hover:underline">
+          Back to Home
+        </a>
+      </div>
       <Card className="overflow-hidden p-0">
         <CardContent className="grid p-0 md:grid-cols-2">
           <form className="p-6 md:p-8">
