@@ -79,10 +79,34 @@ export default function Topbar() {
                 </div>
             </div>
 
-            {/* Mobile Menu */}
+            {/* Mobile Menu Overlay */}
             {isMenuOpen && (
-                <div className="md:hidden bg-[#F9F5F1] shadow-lg border-t border-[#ECEEF0]">
-                    <nav className="flex flex-col">
+                <div 
+                    className="md:hidden fixed inset-0 bg-black bg-opacity-50 z-40"
+                    onClick={() => setIsMenuOpen(false)}
+                />
+            )}
+
+            {/* Mobile Menu Drawer */}
+            <div className={`md:hidden fixed top-0 left-0 h-full w-64 bg-[#F9F5F1] shadow-2xl z-50 transform transition-transform duration-300 ease-in-out ${isMenuOpen ? 'translate-x-0' : '-translate-x-full'}`}>
+                <div className="flex flex-col h-full">
+                    {/* Drawer Header */}
+                    <div className="flex items-center justify-between p-4 border-b border-[#ECEEF0]">
+                        <div className="flex items-center gap-2">
+                            <img src='/brainlink.svg' alt="Brainlink Logo" className="w-10 h-auto" draggable='false'/>
+                            <span className="font-bold text-lg text-[#B32222]">BrainLink</span>
+                        </div>
+                        <button 
+                            onClick={() => setIsMenuOpen(false)}
+                            className="p-2 text-[#666666] hover:text-[#B32222] transition-colors"
+                            aria-label="Close menu"
+                        >
+                            <CloseIcon />
+                        </button>
+                    </div>
+
+                    {/* Navigation Links */}
+                    <nav className="flex flex-col flex-1 py-4">
                         <a
                             href="#"
                             onClick={(e) => { 
@@ -128,6 +152,8 @@ export default function Topbar() {
                             Study Room
                         </a>
                     </nav>
+
+                    {/* Drawer Footer with Buttons */}
                     <div className="flex flex-col gap-3 p-4 border-t border-[#ECEEF0]">
                         <button 
                             onClick={() => { router.push("/login"); setIsMenuOpen(false); }}
@@ -137,7 +163,7 @@ export default function Topbar() {
                             className="w-full px-4 py-2 rounded-xl bg-[#B32222] text-white text-sm font-semibold shadow-sm transition-all duration-500 ease-out hover:shadow-lg hover:drop-shadow-[0_6px_12px_rgba(179,34,34,0.25)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B32222]/40 cursor-pointer">Sign Up</button>
                     </div>
                 </div>
-            )}
+            </div>
         </div>
     );
 }
