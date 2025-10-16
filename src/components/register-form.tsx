@@ -63,7 +63,6 @@ export function RegisterForm({
 				return;
 			}
 
-			// Success - redirect to login or dashboard
 			router.push("/login?registered=true");
 		} catch (err) {
 			setError("An error occurred. Please try again.");
