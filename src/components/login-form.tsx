@@ -40,8 +40,7 @@ export function LoginForm({
         return;
       }
 
-      // Login successful - redirect to dashboard or home
-      router.push("/"); // Change this to your desired redirect path
+      router.push("/"); 
     } catch (err) {
       setError("An error occurred. Please try again.");
     } finally {
