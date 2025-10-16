@@ -5,7 +5,7 @@ import Topbar from "./sections/Topbar";
 
 export default function HideTopbar({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
-  const hideTopbar = pathname === "/register" || pathname === "/login" || pathname === "/room";
+  const hideTopbar = pathname === "/register" || pathname === "/login" || pathname === "/room" || pathname === "/";
   return (
     <>
       {!hideTopbar && <Topbar />}
