@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { TabsProvider } from "../components/context/TabsContext";
-import { AuthProvider } from "../components/context/AuthContext";
 import HideTopbar from "../components/HideTopbar";
 
 const geistSans = Geist({
@@ -33,11 +32,9 @@ export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <AuthProvider>
-          <TabsProvider>
-            <HideTopbar>{children}</HideTopbar>
-          </TabsProvider>
-        </AuthProvider>
+        <TabsProvider>
+          <HideTopbar>{children}</HideTopbar>
+        </TabsProvider>
       </body>
     </html>
   );
