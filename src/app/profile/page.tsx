@@ -16,7 +16,6 @@ import CancelIcon from '@mui/icons-material/Cancel';
 export default function ProfilePage() {
   const { user, loading, setUser } = useAuth();
   const router = useRouter();
-  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const [isEditingProfile, setIsEditingProfile] = useState(false);
   const [isEditingPassword, setIsEditingPassword] = useState(false);
@@ -29,8 +28,6 @@ export default function ProfilePage() {
     newPassword: "",
     confirmPassword: "",
   });
-  const [profilePicture, setProfilePicture] = useState<string | null>(null);
-  const [profilePictureFile, setProfilePictureFile] = useState<File | null>(null);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -264,55 +261,15 @@ export default function ProfilePage() {
           </CardHeader>
           <CardContent className="flex flex-col items-center gap-4">
             <div className="relative">
-              {profilePicture ? (
-                <img
-                  src={profilePicture}
-                  alt="Profile"
-                  className="w-32 h-32 rounded-full object-cover border-4 border-[#B32222]"
-                />
-              ) : (
-                <AccountCircleIcon
-                  style={{ fontSize: 128 }}
-                  className="text-[#666666]"
-                />
-              )}
-              <button
-                onClick={() => fileInputRef.current?.click()}
-                className="absolute bottom-0 right-0 p-2 rounded-full bg-[#B32222] text-white hover:bg-[#8B1A1A] transition-colors"
-              >
-                <EditIcon fontSize="small" />
-              </button>
+              <AccountCircleIcon
+                style={{ fontSize: 128 }}
+                className="text-[#666666]"
+              />
             </div>
-            <input
-              ref={fileInputRef}
-              type="file"
-              accept="image/*"
-              onChange={handleProfilePictureChange}
-              className="hidden"
-            />
-            {profilePictureFile && (
-              <div className="flex gap-2">
-                <Button
-                  onClick={handleProfilePictureSubmit}
-                  disabled={isSubmitting}
-                  className="bg-[#B32222] hover:bg-[#8B1A1A]"
-                >
-                  <SaveIcon fontSize="small" className="mr-2" />
-                  Save Picture
-                </Button>
-                <Button
-                  onClick={() => {
-                    setProfilePictureFile(null);
-                    setProfilePicture(user.profile_picture || null);
-                  }}
-                  variant="outline"
-                  disabled={isSubmitting}
-                >
-                  <CancelIcon fontSize="small" className="mr-2" />
-                  Cancel
-                </Button>
-              </div>
-            )}
+            <div className="text-center">
+              <p className="text-lg font-semibold text-[#B32222]">Coming Soon</p>
+              <p className="text-sm text-[#666666] mt-1">Profile picture upload will be available soon</p>
+            </div>
           </CardContent>
         </Card>
 
