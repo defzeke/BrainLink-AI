@@ -4,8 +4,6 @@ import "./globals.css";
 import { TabsProvider } from "../components/context/TabsContext";
 import HideTopbarOnAuth from "../components/HideTopbarOnAuth";
 
-
-
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -25,7 +23,6 @@ export const metadata: Metadata = {
     ],
   },
 };
-
 
 interface RootLayoutProps {
   children: React.ReactNode;
