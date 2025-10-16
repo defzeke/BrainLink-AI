@@ -27,7 +27,6 @@ export default function ProfilePage() {
   const [isEditingPassword, setIsEditingPassword] = useState(false);
   const [profileData, setProfileData] = useState({
     display_name: "",
-    email: "",
   });
   const [passwordData, setPasswordData] = useState({
     currentPassword: "",
@@ -44,7 +43,6 @@ export default function ProfilePage() {
     } else if (user) {
       setProfileData({
         display_name: user.display_name || user.name || "",
-        email: user.email,
       });
     }
   }, [user, loading, router]);
@@ -72,7 +70,6 @@ export default function ProfilePage() {
     try {
       // Update user directly with Supabase
       const { error: updateError } = await supabase.auth.updateUser({
-        email: profileData.email,
         data: {
           display_name: profileData.display_name,
           name: profileData.display_name,
@@ -91,7 +88,6 @@ export default function ProfilePage() {
         setUser({
           ...user,
           display_name: profileData.display_name,
-          email: profileData.email,
         });
       }
 
@@ -252,17 +248,6 @@ export default function ProfilePage() {
                     required
                   />
                 </div>
-                <div className="grid gap-3">
-                  <Label htmlFor="email">Email</Label>
-                  <Input
-                    id="email"
-                    type="email"
-                    value={profileData.email}
-                    onChange={handleProfileChange}
-                    disabled={!isEditingProfile || isSubmitting}
-                    required
-                  />
-                </div>
                 {isEditingProfile && (
                   <div className="flex gap-2">
                     <Button
@@ -279,7 +264,6 @@ export default function ProfilePage() {
                         setIsEditingProfile(false);
                         setProfileData({
                           display_name: user.display_name || user.name || "",
-                          email: user.email,
                         });
                       }}
                       variant="outline"
