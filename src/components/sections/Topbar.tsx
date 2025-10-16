@@ -1,21 +1,37 @@
 "use client";
 
 import { useTabs } from "../context/TabsContext";
+import { useAuth } from "../context/AuthContext";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import LogoutIcon from '@mui/icons-material/Logout';
 
 
 export default function Topbar() {
     const { active, setActive } = useTabs();
+    const { user, logout, loading } = useAuth();
     const router = useRouter();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [showUserMenu, setShowUserMenu] = useState(false);
 
     const baseLink =
         "relative inline-flex items-center px-1 py-2 font-semibold text-[#666666] hover:text-[#B32222] transition-colors duration-400 focus:outline-none after:absolute after:left-1/2 after:-translate-x-1/2 after:-bottom-2 after:h-2 after:w-2 after:rounded-full after:bg-[#B32222] after:opacity-0";
 
     const mobileLink = "block px-4 py-3 font-semibold text-[#666666] hover:text-[#B32222] hover:bg-[#F2DFDB] transition-colors duration-400";
+
+    const handleLogout = async () => {
+        try {
+            await logout();
+            setShowUserMenu(false);
+            setIsMenuOpen(false);
+            router.push("/");
+        } catch (error) {
+            console.error("Logout error:", error);
+        }
+    };
 
     return (
     <div className="fixed top-0 inset-x-0 z-50 w-full">
@@ -70,12 +86,39 @@ export default function Topbar() {
 
                 {/* Desktop Buttons */}
                 <div className="hidden md:flex justify-end gap-3 mr-5">
-                    <button 
-                        onClick={() => router.push("/login")}
-                        className="px-4 py-2 rounded-xl hover:bg-[#F2DFDB] transition-colors duration-400 font-semibold cursor-pointer">Sign In</button>
-                    <button 
-                        onClick={() => router.push("/register")}
-                        className="px-4 py-2 rounded-xl bg-[#B32222] text-white text-sm font-semibold shadow-sm transition-all duration-500 ease-out hover:shadow-lg hover:drop-shadow-[0_6px_12px_rgba(179,34,34,0.25)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B32222]/40 cursor-pointer">Sign Up</button>
+                    {loading ? (
+                        <div className="px-4 py-2 text-[#666666]">Loading...</div>
+                    ) : user ? (
+                        <div className="relative">
+                            <button 
+                                onClick={() => setShowUserMenu(!showUserMenu)}
+                                className="flex items-center gap-2 px-4 py-2 rounded-xl hover:bg-[#F2DFDB] transition-colors duration-400 font-semibold cursor-pointer"
+                            >
+                                <AccountCircleIcon />
+                                <span>{user.display_name || user.name || user.email}</span>
+                            </button>
+                            {showUserMenu && (
+                                <div className="absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-lg border border-[#ECEEF0] py-2 z-50">
+                                    <button 
+                                        onClick={handleLogout}
+                                        className="w-full flex items-center gap-2 px-4 py-2 text-left text-[#666666] hover:bg-[#F2DFDB] hover:text-[#B32222] transition-colors duration-400"
+                                    >
+                                        <LogoutIcon fontSize="small" />
+                                        <span>Logout</span>
+                                    </button>
+                                </div>
+                            )}
+                        </div>
+                    ) : (
+                        <>
+                            <button 
+                                onClick={() => router.push("/login")}
+                                className="px-4 py-2 rounded-xl hover:bg-[#F2DFDB] transition-colors duration-400 font-semibold cursor-pointer">Sign In</button>
+                            <button 
+                                onClick={() => router.push("/register")}
+                                className="px-4 py-2 rounded-xl bg-[#B32222] text-white text-sm font-semibold shadow-sm transition-all duration-500 ease-out hover:shadow-lg hover:drop-shadow-[0_6px_12px_rgba(179,34,34,0.25)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B32222]/40 cursor-pointer">Sign Up</button>
+                        </>
+                    )}
                 </div>
             </div>
 
