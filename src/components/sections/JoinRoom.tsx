@@ -35,6 +35,7 @@ export default function Join() {
                 <button
                     type="button"
                     className="flex items-center justify-center w-full border border-red-200 text-[#c0392b] font-semibold py-2.5 md:py-3 rounded-lg bg-[#fdf7f7] hover:bg-red-50 transition-colors duration-150 text-sm md:text-base"
+                    onClick={"/room"
                 >
                     <AutoAwesomeOutlinedIcon className="mr-2 text-xl md:text-2xl" /> Create New Room
                 </button>
