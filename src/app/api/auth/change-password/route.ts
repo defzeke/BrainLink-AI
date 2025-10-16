@@ -1,11 +1,6 @@
 import { NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
 
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-);
-
 export async function POST(request: Request) {
   try {
     const { currentPassword, newPassword } = await request.json();
@@ -26,19 +21,50 @@ export async function POST(request: Request) {
       );
     }
 
-    // Get current session
-    const { data: { session } } = await supabase.auth.getSession();
+    // Get the authorization header
+    const authHeader = request.headers.get('authorization');
     
-    if (!session) {
+    if (!authHeader) {
       return NextResponse.json(
-        { error: 'Not authenticated' },
+        { error: 'Not authenticated - No authorization header' },
         { status: 401 }
       );
     }
 
-    // Verify current password by attempting to sign in
-    const { error: signInError } = await supabase.auth.signInWithPassword({
-      email: session.user.email!,
+    // Extract the token
+    const token = authHeader.replace('Bearer ', '');
+    
+    // Create Supabase client with the user's token
+    const supabase = createClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL!,
+      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+      {
+        global: {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        },
+      }
+    );
+
+    // Get current user
+    const { data: { user }, error: userError } = await supabase.auth.getUser(token);
+    
+    if (userError || !user) {
+      return NextResponse.json(
+        { error: 'Not authenticated - Invalid token' },
+        { status: 401 }
+      );
+    }
+
+    // Verify current password by attempting to sign in with a new client
+    const supabaseVerify = createClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL!,
+      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+    );
+    
+    const { error: signInError } = await supabaseVerify.auth.signInWithPassword({
+      email: user.email!,
       password: currentPassword,
     });
 
