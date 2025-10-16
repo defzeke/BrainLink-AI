@@ -14,7 +14,7 @@ import SaveIcon from '@mui/icons-material/Save';
 import CancelIcon from '@mui/icons-material/Cancel';
 
 export default function ProfilePage() {
-  const { user, loading, setUser } = useAuth();
+  const { user, loading, setUser, getAuthToken } = useAuth();
   const router = useRouter();
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -92,10 +92,18 @@ export default function ProfilePage() {
     setIsSubmitting(true);
 
     try {
+      const token = await getAuthToken();
+      if (!token) {
+        setError("Not authenticated. Please login again.");
+        setIsSubmitting(false);
+        return;
+      }
+
       const response = await fetch("/api/auth/update-profile", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`,
         },
         body: JSON.stringify(profileData),
       });
@@ -146,10 +154,18 @@ export default function ProfilePage() {
     setIsSubmitting(true);
 
     try {
+      const token = await getAuthToken();
+      if (!token) {
+        setError("Not authenticated. Please login again.");
+        setIsSubmitting(false);
+        return;
+      }
+
       const response = await fetch("/api/auth/change-password", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`,
         },
         body: JSON.stringify({
           currentPassword: passwordData.currentPassword,
@@ -187,11 +203,21 @@ export default function ProfilePage() {
     setIsSubmitting(true);
 
     try {
+      const token = await getAuthToken();
+      if (!token) {
+        setError("Not authenticated. Please login again.");
+        setIsSubmitting(false);
+        return;
+      }
+
       const formData = new FormData();
       formData.append("file", profilePictureFile);
 
       const response = await fetch("/api/auth/update-profile-picture", {
         method: "POST",
+        headers: {
+          "Authorization": `Bearer ${token}`,
+        },
         body: formData,
       });
 
