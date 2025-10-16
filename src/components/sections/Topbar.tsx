@@ -198,12 +198,32 @@ export default function Topbar() {
 
                     {/* Auth Buttons */}
                     <div className="flex flex-col gap-3 p-4 border-t border-[#ECEEF0]">
-                        <button 
-                            onClick={() => { router.push("/login"); setIsMenuOpen(false); }}
-                            className="w-full px-4 py-2 rounded-xl hover:bg-[#F2DFDB] transition-colors duration-400 font-semibold cursor-pointer">Sign In</button>
-                        <button 
-                            onClick={() => { router.push("/register"); setIsMenuOpen(false); }}
-                            className="w-full px-4 py-2 rounded-xl bg-[#B32222] text-white text-sm font-semibold shadow-sm transition-all duration-500 ease-out hover:shadow-lg hover:drop-shadow-[0_6px_12px_rgba(179,34,34,0.25)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B32222]/40 cursor-pointer">Sign Up</button>
+                        {loading ? (
+                            <div className="px-4 py-2 text-center text-[#666666]">Loading...</div>
+                        ) : user ? (
+                            <>
+                                <div className="flex items-center gap-2 px-4 py-2 text-[#666666] font-semibold">
+                                    <AccountCircleIcon />
+                                    <span>{user.display_name || user.name || user.email}</span>
+                                </div>
+                                <button 
+                                    onClick={handleLogout}
+                                    className="w-full flex items-center justify-center gap-2 px-4 py-2 rounded-xl bg-[#B32222] text-white text-sm font-semibold shadow-sm transition-all duration-500 ease-out hover:shadow-lg hover:drop-shadow-[0_6px_12px_rgba(179,34,34,0.25)] cursor-pointer"
+                                >
+                                    <LogoutIcon fontSize="small" />
+                                    <span>Logout</span>
+                                </button>
+                            </>
+                        ) : (
+                            <>
+                                <button 
+                                    onClick={() => { router.push("/login"); setIsMenuOpen(false); }}
+                                    className="w-full px-4 py-2 rounded-xl hover:bg-[#F2DFDB] transition-colors duration-400 font-semibold cursor-pointer">Sign In</button>
+                                <button 
+                                    onClick={() => { router.push("/register"); setIsMenuOpen(false); }}
+                                    className="w-full px-4 py-2 rounded-xl bg-[#B32222] text-white text-sm font-semibold shadow-sm transition-all duration-500 ease-out hover:shadow-lg hover:drop-shadow-[0_6px_12px_rgba(179,34,34,0.25)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B32222]/40 cursor-pointer">Sign Up</button>
+                            </>
+                        )}
                     </div>
                 </div>
             </div>
