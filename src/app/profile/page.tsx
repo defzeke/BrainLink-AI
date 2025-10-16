@@ -2,7 +2,7 @@
 
 import { useAuth } from "@/components/context/AuthContext";
 import { useRouter } from "next/navigation";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -40,7 +40,6 @@ export default function ProfilePage() {
         display_name: user.display_name || user.name || "",
         email: user.email,
       });
-      setProfilePicture(user.profile_picture || null);
     }
   }, [user, loading, router]);
 
@@ -56,30 +55,6 @@ export default function ProfilePage() {
       ...passwordData,
       [e.target.id]: e.target.value,
     });
-  };
-
-  const handleProfilePictureChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      // Validate file size (max 5MB)
-      if (file.size > 5 * 1024 * 1024) {
-        setError("File size must be less than 5MB");
-        return;
-      }
-
-      // Validate file type
-      if (!file.type.startsWith("image/")) {
-        setError("File must be an image");
-        return;
-      }
-
-      setProfilePictureFile(file);
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setProfilePicture(reader.result as string);
-      };
-      reader.readAsDataURL(file);
-    }
   };
 
   const handleProfileSubmit = async (e: React.FormEvent) => {
@@ -169,47 +144,6 @@ export default function ProfilePage() {
         newPassword: "",
         confirmPassword: "",
       });
-    } catch (err) {
-      setError("An error occurred. Please try again.");
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
-  const handleProfilePictureSubmit = async () => {
-    if (!profilePictureFile) return;
-
-    setError("");
-    setSuccess("");
-    setIsSubmitting(true);
-
-    try {
-      const formData = new FormData();
-      formData.append("file", profilePictureFile);
-
-      const response = await fetch("/api/auth/update-profile-picture", {
-        method: "POST",
-        body: formData,
-      });
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        setError(data.error || "Failed to update profile picture");
-        setIsSubmitting(false);
-        return;
-      }
-
-      // Update user context
-      if (user) {
-        setUser({
-          ...user,
-          profile_picture: data.profile_picture_url,
-        });
-      }
-
-      setSuccess("Profile picture updated successfully!");
-      setProfilePictureFile(null);
     } catch (err) {
       setError("An error occurred. Please try again.");
     } finally {
