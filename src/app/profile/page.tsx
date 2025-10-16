@@ -1,6 +1,6 @@
 "use client";
 
-import { useAuth, supabase } from "@/components/context/AuthContext";
+import { useAuth } from "@/components/context/AuthContext";
 import { useRouter } from "next/navigation";
 import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
@@ -14,7 +14,7 @@ import SaveIcon from '@mui/icons-material/Save';
 import CancelIcon from '@mui/icons-material/Cancel';
 
 export default function ProfilePage() {
-  const { user, loading, setUser, refreshUser } = useAuth();
+  const { user, loading, setUser } = useAuth();
   const router = useRouter();
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -92,30 +92,35 @@ export default function ProfilePage() {
     setIsSubmitting(true);
 
     try {
-      // Update user metadata using Supabase directly
-      const { error: updateError } = await supabase.auth.updateUser({
-        email: profileData.email,
-        data: {
-          display_name: profileData.display_name,
-          name: profileData.display_name,
-          full_name: profileData.display_name,
-        }
+      const response = await fetch("/api/auth/update-profile", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(profileData),
       });
 
-      if (updateError) {
-        setError(updateError.message || "Failed to update profile");
+      const data = await response.json();
+
+      if (!response.ok) {
+        setError(data.error || "Failed to update profile");
         setIsSubmitting(false);
         return;
       }
 
-      // Refresh user data
-      await refreshUser();
+      // Update user context
+      if (user) {
+        setUser({
+          ...user,
+          display_name: profileData.display_name,
+          email: profileData.email,
+        });
+      }
 
       setSuccess("Profile updated successfully!");
       setIsEditingProfile(false);
-    } catch (err: any) {
-      console.error('Error:', err);
-      setError(err.message || "An error occurred. Please try again.");
+    } catch (err) {
+      setError("An error occurred. Please try again.");
     } finally {
       setIsSubmitting(false);
     }
@@ -141,31 +146,21 @@ export default function ProfilePage() {
     setIsSubmitting(true);
 
     try {
-      if (!user) {
-        setError("Not authenticated");
-        setIsSubmitting(false);
-        return;
-      }
-
-      // Verify current password by attempting to sign in
-      const { error: signInError } = await supabase.auth.signInWithPassword({
-        email: user.email,
-        password: passwordData.currentPassword,
+      const response = await fetch("/api/auth/change-password", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          currentPassword: passwordData.currentPassword,
+          newPassword: passwordData.newPassword,
+        }),
       });
 
-      if (signInError) {
-        setError("Current password is incorrect");
-        setIsSubmitting(false);
-        return;
-      }
+      const data = await response.json();
 
-      // Update password using Supabase directly
-      const { error: updateError } = await supabase.auth.updateUser({
-        password: passwordData.newPassword,
-      });
-
-      if (updateError) {
-        setError(updateError.message || "Failed to change password");
+      if (!response.ok) {
+        setError(data.error || "Failed to change password");
         setIsSubmitting(false);
         return;
       }
@@ -177,81 +172,49 @@ export default function ProfilePage() {
         newPassword: "",
         confirmPassword: "",
       });
-    } catch (err: any) {
-      console.error('Error:', err);
-      setError(err.message || "An error occurred. Please try again.");
+    } catch (err) {
+      setError("An error occurred. Please try again.");
     } finally {
       setIsSubmitting(false);
     }
   };
 
   const handleProfilePictureSubmit = async () => {
-    if (!profilePictureFile || !user) return;
+    if (!profilePictureFile) return;
 
     setError("");
     setSuccess("");
     setIsSubmitting(true);
 
     try {
-      // Validate file
-      if (!profilePictureFile.type.startsWith('image/')) {
-        setError("File must be an image");
-        setIsSubmitting(false);
-        return;
-      }
+      const formData = new FormData();
+      formData.append("file", profilePictureFile);
 
-      if (profilePictureFile.size > 5 * 1024 * 1024) {
-        setError("File size must be less than 5MB");
-        setIsSubmitting(false);
-        return;
-      }
-
-      // Create unique filename
-      const fileExt = profilePictureFile.name.split('.').pop();
-      const fileName = `${user.id}-${Date.now()}.${fileExt}`;
-      const filePath = `profile-pictures/${fileName}`;
-
-      // Upload to Supabase Storage
-      const { data: uploadData, error: uploadError } = await supabase.storage
-        .from('avatars')
-        .upload(filePath, profilePictureFile, {
-          contentType: profilePictureFile.type,
-          upsert: true,
-        });
-
-      if (uploadError) {
-        console.error('Upload error:', uploadError);
-        setError(`Failed to upload image: ${uploadError.message}`);
-        setIsSubmitting(false);
-        return;
-      }
-
-      // Get public URL
-      const { data: { publicUrl } } = supabase.storage
-        .from('avatars')
-        .getPublicUrl(filePath);
-
-      // Update user metadata
-      const { error: updateError } = await supabase.auth.updateUser({
-        data: {
-          profile_picture: publicUrl,
-        }
+      const response = await fetch("/api/auth/update-profile-picture", {
+        method: "POST",
+        body: formData,
       });
 
-      if (updateError) {
-        setError(`Failed to update profile: ${updateError.message}`);
+      const data = await response.json();
+
+      if (!response.ok) {
+        setError(data.error || "Failed to update profile picture");
         setIsSubmitting(false);
         return;
       }
 
-      // Refresh user data
-      await refreshUser();
+      // Update user context
+      if (user) {
+        setUser({
+          ...user,
+          profile_picture: data.profile_picture_url,
+        });
+      }
 
       setSuccess("Profile picture updated successfully!");
       setProfilePictureFile(null);
-    } catch (err: any) {
-      console.error('Error:', err);
-      setError(err.message || "An error occurred. Please try again.");
+    } catch (err) {
+      setError("An error occurred. Please try again.");
     } finally {
       setIsSubmitting(false);
     }

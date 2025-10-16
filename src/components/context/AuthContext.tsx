@@ -3,7 +3,7 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 import { createClient } from "@supabase/supabase-js";
 
-export const supabase = createClient(
+const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
   process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
 );
@@ -22,7 +22,6 @@ interface AuthContextType {
   login: (email: string, password: string) => Promise<void>;
   logout: () => Promise<void>;
   setUser: (user: User | null) => void;
-  refreshUser: () => Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -107,23 +106,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     setUser(null);
   };
 
-  const refreshUser = async () => {
-    const { data: { session } } = await supabase.auth.getSession();
-    if (session?.user) {
-      setUser({
-        id: session.user.id,
-        email: session.user.email!,
-        display_name: session.user.user_metadata?.display_name || 
-                     session.user.user_metadata?.name ||
-                     session.user.user_metadata?.full_name,
-        name: session.user.user_metadata?.name,
-        profile_picture: session.user.user_metadata?.profile_picture,
-      });
-    }
-  };
-
   return (
-    <AuthContext.Provider value={{ user, loading, login, logout, setUser, refreshUser }}>
+    <AuthContext.Provider value={{ user, loading, login, logout, setUser }}>
       {children}
     </AuthContext.Provider>
   );
