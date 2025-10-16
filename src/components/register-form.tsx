@@ -6,12 +6,78 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 
 export function RegisterForm({
 	className,
 	...props
 }: React.ComponentProps<"div">) {
+	const router = useRouter();
+	const [formData, setFormData] = useState({
+		name: "",
+		email: "",
+		password: "",
+		confirmPassword: "",
+	});
+	const [error, setError] = useState("");
+	const [loading, setLoading] = useState(false);
+
+	const handleSubmit = async (e: React.FormEvent) => {
+		e.preventDefault();
+		setError("");
+
+		// Validate passwords match
+		if (formData.password !== formData.confirmPassword) {
+			setError("Passwords do not match");
+			return;
+		}
+
+		// Validate password length
+		if (formData.password.length < 6) {
+			setError("Password must be at least 6 characters long");
+			return;
+		}
+
+		setLoading(true);
+
+		try {
+			const response = await fetch("/api/auth/signup", {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify({
+					name: formData.name,
+					email: formData.email,
+					password: formData.password,
+				}),
+			});
+
+			const data = await response.json();
+
+			if (!response.ok) {
+				setError(data.error || "Registration failed");
+				setLoading(false);
+				return;
+			}
+
+			// Success - redirect to login or dashboard
+			router.push("/login?registered=true");
+		} catch (err) {
+			setError("An error occurred. Please try again.");
+			setLoading(false);
+		}
+	};
+
+	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+		setFormData({
+			...formData,
+			[e.target.id]: e.target.value,
+		});
+	};
+
 	return (
 		<div className={cn("flex flex-col gap-6", className)} {...props}>
 			<a href="/" className="flex items-center gap-2 hover:opacity-70 transition-opacity w-fit">
@@ -20,7 +86,7 @@ export function RegisterForm({
 			</a>
 			<Card className="overflow-hidden p-0">
 				<CardContent className="grid p-0 md:grid-cols-2">
-					<form className="p-6 md:p-8">
+					<form className="p-6 md:p-8" onSubmit={handleSubmit}>
 						<div className="flex flex-col gap-6">
 							<div className="flex flex-col items-center text-center">
 								<h1 className="text-2xl font-bold">Create your account</h1>
@@ -28,24 +94,59 @@ export function RegisterForm({
 									Register for your BrainLink account
 								</p>
 							</div>
+							{error && (
+								<div className="bg-destructive/10 text-destructive text-sm p-3 rounded-md border border-destructive/20">
+									{error}
+								</div>
+							)}
 							<div className="grid gap-3">
 								<Label htmlFor="name">Name</Label>
-								<Input id="name" type="text" placeholder="Your Name" required />
+								<Input 
+									id="name" 
+									type="text" 
+									placeholder="Your Name" 
+									required 
+									value={formData.name}
+									onChange={handleChange}
+									disabled={loading}
+								/>
 							</div>
 							<div className="grid gap-3">
 								<Label htmlFor="email">Email</Label>
-								<Input id="email" type="email" placeholder="m@example.com" required />
+								<Input 
+									id="email" 
+									type="email" 
+									placeholder="m@example.com" 
+									required 
+									value={formData.email}
+									onChange={handleChange}
+									disabled={loading}
+								/>
 							</div>
 							<div className="grid gap-3">
 								<Label htmlFor="password">Password</Label>
-								<Input id="password" type="password" required />
+								<Input 
+									id="password" 
+									type="password" 
+									required 
+									value={formData.password}
+									onChange={handleChange}
+									disabled={loading}
+								/>
 							</div>
 							<div className="grid gap-3">
-								<Label htmlFor="confirm-password">Confirm Password</Label>
-								<Input id="confirm-password" type="password" required />
+								<Label htmlFor="confirmPassword">Confirm Password</Label>
+								<Input 
+									id="confirmPassword" 
+									type="password" 
+									required 
+									value={formData.confirmPassword}
+									onChange={handleChange}
+									disabled={loading}
+								/>
 							</div>
-							<Button type="submit" className="w-full">
-								Register
+							<Button type="submit" className="w-full" disabled={loading}>
+								{loading ? "Registering..." : "Register"}
 							</Button>
 							<div className="text-center text-sm">
 								Already have an account?{" "}
