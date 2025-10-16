@@ -33,9 +33,11 @@ export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <TabsProvider>
-          <HideTopbar>{children}</HideTopbar>
-        </TabsProvider>
+        <AuthProvider>
+          <TabsProvider>
+            <HideTopbar>{children}</HideTopbar>
+          </TabsProvider>
+        </AuthProvider>
       </body>
     </html>
   );
