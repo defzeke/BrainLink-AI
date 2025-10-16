@@ -23,6 +23,11 @@ export default function Topbar() {
 
     const mobileLink = "block px-4 py-3 font-semibold text-[#666666] hover:text-[#B32222] hover:bg-[#F2DFDB] transition-colors duration-400";
 
+    // Debug: Log user state
+    useEffect(() => {
+        console.log('Topbar - Loading:', loading, 'User:', user);
+    }, [user, loading]);
+
     // Close dropdown when clicking outside
     useEffect(() => {
         function handleClickOutside(event: MouseEvent) {

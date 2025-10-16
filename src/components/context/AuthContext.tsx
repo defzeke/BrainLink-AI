@@ -32,15 +32,20 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       const { data: { session } } = await supabase.auth.getSession();
       
       if (session?.user) {
+        const userName = session.user.user_metadata?.name || 
+                         session.user.user_metadata?.display_name || 
+                         session.user.user_metadata?.full_name || 
+                         session.user.email?.split('@')[0] || 'User';
+        
+        console.log('✅ User logged in:', userName, session.user.email);
+        
         setUser({
           id: session.user.id,
           email: session.user.email || '',
-          name: session.user.user_metadata?.name || 
-                session.user.user_metadata?.display_name || 
-                session.user.user_metadata?.full_name || 
-                session.user.email?.split('@')[0] || 'User'
+          name: userName
         });
       } else {
+        console.log('❌ No user session found');
         setUser(null);
       }
     } catch (error) {
