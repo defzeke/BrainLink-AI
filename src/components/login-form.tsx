@@ -8,6 +8,7 @@ import { Label } from "@/components/ui/label"
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { useAuth } from "./context/AuthContext";
 
 export function LoginForm({
   className,
@@ -18,6 +19,7 @@ export function LoginForm({
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
+  const { refreshUser } = useAuth();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -40,6 +42,8 @@ export function LoginForm({
         return;
       }
 
+      // Refresh the user context
+      await refreshUser();
       router.push("/"); 
     } catch (err) {
       setError("An error occurred. Please try again.");

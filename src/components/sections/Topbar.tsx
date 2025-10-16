@@ -208,14 +208,37 @@ export default function Topbar() {
                         </a>
                     </nav>
 
-                    {/* Auth Buttons */}
+                    {/* Auth Buttons / User Profile */}
                     <div className="flex flex-col gap-3 p-4 border-t border-[#ECEEF0]">
-                        <button 
-                            onClick={() => { router.push("/login"); setIsMenuOpen(false); }}
-                            className="w-full px-4 py-2 rounded-xl hover:bg-[#F2DFDB] transition-colors duration-400 font-semibold cursor-pointer">Sign In</button>
-                        <button 
-                            onClick={() => { router.push("/register"); setIsMenuOpen(false); }}
-                            className="w-full px-4 py-2 rounded-xl bg-[#B32222] text-white text-sm font-semibold shadow-sm transition-all duration-500 ease-out hover:shadow-lg hover:drop-shadow-[0_6px_12px_rgba(179,34,34,0.25)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B32222]/40 cursor-pointer">Sign Up</button>
+                        {loading ? (
+                            <div className="w-full h-10 bg-gray-200 animate-pulse rounded-xl"></div>
+                        ) : user ? (
+                            <>
+                                <div className="px-4 py-3 bg-[#F2DFDB] rounded-xl">
+                                    <div className="flex items-center gap-2 mb-1">
+                                        <PersonIcon className="text-[#B32222]" fontSize="small" />
+                                        <p className="font-semibold text-gray-900">{user.name}</p>
+                                    </div>
+                                    <p className="text-xs text-gray-600 truncate">{user.email}</p>
+                                </div>
+                                <button 
+                                    onClick={() => { handleSignOut(); setIsMenuOpen(false); }}
+                                    className="w-full flex items-center justify-center gap-2 px-4 py-2 rounded-xl bg-gray-100 hover:bg-gray-200 transition-colors duration-400 font-semibold cursor-pointer"
+                                >
+                                    <LogoutIcon fontSize="small" />
+                                    Sign Out
+                                </button>
+                            </>
+                        ) : (
+                            <>
+                                <button 
+                                    onClick={() => { router.push("/login"); setIsMenuOpen(false); }}
+                                    className="w-full px-4 py-2 rounded-xl hover:bg-[#F2DFDB] transition-colors duration-400 font-semibold cursor-pointer">Sign In</button>
+                                <button 
+                                    onClick={() => { router.push("/register"); setIsMenuOpen(false); }}
+                                    className="w-full px-4 py-2 rounded-xl bg-[#B32222] text-white text-sm font-semibold shadow-sm transition-all duration-500 ease-out hover:shadow-lg hover:drop-shadow-[0_6px_12px_rgba(179,34,34,0.25)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B32222]/40 cursor-pointer">Sign Up</button>
+                            </>
+                        )}
                     </div>
                 </div>
             </div>
