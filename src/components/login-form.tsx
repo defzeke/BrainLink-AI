@@ -40,7 +40,7 @@ export function LoginForm({
         return;
       }
 
-      router.push("/room"); 
+      router.push("/"); 
     } catch (err) {
       setError("An error occurred. Please try again.");
     } finally {
