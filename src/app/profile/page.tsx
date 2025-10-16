@@ -14,6 +14,11 @@ import SaveIcon from '@mui/icons-material/Save';
 import CancelIcon from '@mui/icons-material/Cancel';
 import { createClient } from "@supabase/supabase-js";
 
+const supabase = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL!,
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+);
+
 export default function ProfilePage() {
   const { user, loading, setUser } = useAuth();
   const router = useRouter();
@@ -63,35 +68,17 @@ export default function ProfilePage() {
     setIsSubmitting(true);
 
     try {
-      // Get access token from Supabase session
-      const supabase = createClient(
-        process.env.NEXT_PUBLIC_SUPABASE_URL!,
-        process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-      );
-      const { data: { session } } = await supabase.auth.getSession();
-      
-      if (!session?.access_token) {
-        setError("Not authenticated");
-        setIsSubmitting(false);
-        return;
-      }
-
-      // Call API route to update profile
-      const response = await fetch("/api/auth/update-profile", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
+      // Update user directly with Supabase
+      const { error: updateError } = await supabase.auth.updateUser({
+        data: {
           display_name: profileData.display_name,
-          accessToken: session.access_token,
-        }),
+          name: profileData.display_name,
+          full_name: profileData.display_name,
+        }
       });
 
-      const data = await response.json();
-
-      if (!response.ok) {
-        setError(data.error || "Failed to update profile");
+      if (updateError) {
+        setError(updateError.message || "Failed to update profile");
         setIsSubmitting(false);
         return;
       }
@@ -139,37 +126,25 @@ export default function ProfilePage() {
         return;
       }
 
-      // Get access token from Supabase session
-      const supabase = createClient(
-        process.env.NEXT_PUBLIC_SUPABASE_URL!,
-        process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-      );
-      const { data: { session } } = await supabase.auth.getSession();
-      
-      if (!session?.access_token) {
-        setError("Not authenticated");
+      // Verify current password by attempting to sign in
+      const { error: signInError } = await supabase.auth.signInWithPassword({
+        email: user.email,
+        password: passwordData.currentPassword,
+      });
+
+      if (signInError) {
+        setError("Current password is incorrect");
         setIsSubmitting(false);
         return;
       }
 
-      // Call API route to change password
-      const response = await fetch("/api/auth/change-password", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          currentPassword: passwordData.currentPassword,
-          newPassword: passwordData.newPassword,
-          email: user.email,
-          accessToken: session.access_token,
-        }),
+      // Update password directly with Supabase
+      const { error: updateError } = await supabase.auth.updateUser({
+        password: passwordData.newPassword,
       });
 
-      const data = await response.json();
-
-      if (!response.ok) {
-        setError(data.error || "Failed to change password");
+      if (updateError) {
+        setError(updateError.message || "Failed to change password");
         setIsSubmitting(false);
         return;
       }

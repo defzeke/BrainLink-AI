@@ -1,9 +1,14 @@
 import { NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
 
+const supabase = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL!,
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+);
+
 export async function POST(request: Request) {
   try {
-    const { currentPassword, newPassword, email, accessToken } = await request.json();
+    const { currentPassword, newPassword } = await request.json();
 
     // Validate input
     if (!currentPassword || !newPassword) {
@@ -21,22 +26,19 @@ export async function POST(request: Request) {
       );
     }
 
-    if (!accessToken || !email) {
+    // Get current session
+    const { data: { session } } = await supabase.auth.getSession();
+    
+    if (!session) {
       return NextResponse.json(
         { error: 'Not authenticated' },
         { status: 401 }
       );
     }
 
-    // Create Supabase client for password verification
-    const supabaseVerify = createClient(
-      process.env.NEXT_PUBLIC_SUPABASE_URL!,
-      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-    );
-
     // Verify current password by attempting to sign in
-    const { error: signInError } = await supabaseVerify.auth.signInWithPassword({
-      email: email,
+    const { error: signInError } = await supabase.auth.signInWithPassword({
+      email: session.user.email!,
       password: currentPassword,
     });
 
@@ -46,19 +48,6 @@ export async function POST(request: Request) {
         { status: 401 }
       );
     }
-
-    // Create Supabase client with the user's access token for updating
-    const supabase = createClient(
-      process.env.NEXT_PUBLIC_SUPABASE_URL!,
-      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-      {
-        global: {
-          headers: {
-            Authorization: `Bearer ${accessToken}`
-          }
-        }
-      }
-    );
 
     // Update password
     const { error: updateError } = await supabase.auth.updateUser({

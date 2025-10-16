@@ -1,32 +1,28 @@
 import { NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
 
+const supabase = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL!,
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+);
+
 export async function POST(request: Request) {
   try {
-    const { display_name, accessToken } = await request.json();
+    const { display_name, email } = await request.json();
 
-    if (!accessToken) {
+    // Get current session
+    const { data: { session } } = await supabase.auth.getSession();
+    
+    if (!session) {
       return NextResponse.json(
-        { error: 'Not authenticated - no token provided' },
+        { error: 'Not authenticated' },
         { status: 401 }
       );
     }
 
-    // Create Supabase client with the user's access token
-    const supabase = createClient(
-      process.env.NEXT_PUBLIC_SUPABASE_URL!,
-      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-      {
-        global: {
-          headers: {
-            Authorization: `Bearer ${accessToken}`
-          }
-        }
-      }
-    );
-
     // Update user metadata
     const { data, error } = await supabase.auth.updateUser({
+      email: email,
       data: {
         display_name: display_name,
         name: display_name,
