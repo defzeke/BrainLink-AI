@@ -13,6 +13,7 @@ interface User {
   email: string;
   display_name?: string;
   name?: string;
+  profile_picture?: string;
 }
 
 interface AuthContextType {
