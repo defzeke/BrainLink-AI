@@ -92,35 +92,30 @@ export default function ProfilePage() {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch("/api/auth/update-profile", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(profileData),
+      // Update user metadata using Supabase directly
+      const { error: updateError } = await supabase.auth.updateUser({
+        email: profileData.email,
+        data: {
+          display_name: profileData.display_name,
+          name: profileData.display_name,
+          full_name: profileData.display_name,
+        }
       });
 
-      const data = await response.json();
-
-      if (!response.ok) {
-        setError(data.error || "Failed to update profile");
+      if (updateError) {
+        setError(updateError.message || "Failed to update profile");
         setIsSubmitting(false);
         return;
       }
 
-      // Update user context
-      if (user) {
-        setUser({
-          ...user,
-          display_name: profileData.display_name,
-          email: profileData.email,
-        });
-      }
+      // Refresh user data
+      await refreshUser();
 
       setSuccess("Profile updated successfully!");
       setIsEditingProfile(false);
-    } catch (err) {
-      setError("An error occurred. Please try again.");
+    } catch (err: any) {
+      console.error('Error:', err);
+      setError(err.message || "An error occurred. Please try again.");
     } finally {
       setIsSubmitting(false);
     }
@@ -146,21 +141,31 @@ export default function ProfilePage() {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch("/api/auth/change-password", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          currentPassword: passwordData.currentPassword,
-          newPassword: passwordData.newPassword,
-        }),
+      if (!user) {
+        setError("Not authenticated");
+        setIsSubmitting(false);
+        return;
+      }
+
+      // Verify current password by attempting to sign in
+      const { error: signInError } = await supabase.auth.signInWithPassword({
+        email: user.email,
+        password: passwordData.currentPassword,
       });
 
-      const data = await response.json();
+      if (signInError) {
+        setError("Current password is incorrect");
+        setIsSubmitting(false);
+        return;
+      }
 
-      if (!response.ok) {
-        setError(data.error || "Failed to change password");
+      // Update password using Supabase directly
+      const { error: updateError } = await supabase.auth.updateUser({
+        password: passwordData.newPassword,
+      });
+
+      if (updateError) {
+        setError(updateError.message || "Failed to change password");
         setIsSubmitting(false);
         return;
       }
@@ -172,8 +177,9 @@ export default function ProfilePage() {
         newPassword: "",
         confirmPassword: "",
       });
-    } catch (err) {
-      setError("An error occurred. Please try again.");
+    } catch (err: any) {
+      console.error('Error:', err);
+      setError(err.message || "An error occurred. Please try again.");
     } finally {
       setIsSubmitting(false);
     }
