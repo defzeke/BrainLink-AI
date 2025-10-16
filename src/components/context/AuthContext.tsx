@@ -45,6 +45,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
                          session.user.user_metadata?.name ||
                          session.user.user_metadata?.full_name,
             name: session.user.user_metadata?.name,
+            profile_picture: session.user.user_metadata?.profile_picture,
           });
         } else {
           setUser(null);
@@ -69,6 +70,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
                        session.user.user_metadata?.name ||
                        session.user.user_metadata?.full_name,
           name: session.user.user_metadata?.name,
+          profile_picture: session.user.user_metadata?.profile_picture,
         });
       }
     } catch (error) {
@@ -94,6 +96,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
                      data.user.user_metadata?.name ||
                      data.user.user_metadata?.full_name,
         name: data.user.user_metadata?.name,
+        profile_picture: data.user.user_metadata?.profile_picture,
       });
     }
   };
