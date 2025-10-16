@@ -176,8 +176,8 @@ export default function ProfilePage() {
   }
 
   return (
-    <div className="h-screen bg-[#F9F5F1] overflow-hidden flex items-center justify-center px-6 py-8">
-      <div className="max-w-4xl w-full max-h-[calc(100vh-8rem)] overflow-y-auto">
+    <div className="h-screen bg-[#F9F5F1] overflow-hidden flex items-center justify-center px-6 -mt-5">
+      <div className="max-w-4xl w-full max-h-[calc(100vh-2rem)] overflow-y-auto">
         <a
           href="/"
           className="flex items-center gap-2 hover:opacity-70 transition-opacity w-fit mb-6"
