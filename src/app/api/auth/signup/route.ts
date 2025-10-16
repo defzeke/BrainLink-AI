@@ -42,6 +42,8 @@ export async function POST(request: Request) {
             options: {
                 data: {
                     name: name,
+                    display_name: name,
+                    full_name: name,
                 },
             },
         });
