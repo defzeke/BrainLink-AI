@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { TabsProvider } from "../components/context/TabsContext";
-import HideTopbarOnAuth from "../components/HideTopbarOnAuth";
+import HideTopbar from "../components/HideTopbar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,7 +33,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <TabsProvider>
-          <HideTopbarOnAuth>{children}</HideTopbarOnAuth>
+          <HideTopbar>{children}</HideTopbar>
         </TabsProvider>
       </body>
     </html>
