@@ -8,6 +8,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import LogoutIcon from '@mui/icons-material/Logout';
+import SettingsIcon from '@mui/icons-material/Settings';
 
 
 export default function Topbar() {
@@ -94,11 +95,29 @@ export default function Topbar() {
                                 onClick={() => setShowUserMenu(!showUserMenu)}
                                 className="flex items-center gap-2 px-4 py-2 rounded-xl hover:bg-[#F2DFDB] transition-colors duration-400 font-semibold cursor-pointer"
                             >
-                                <AccountCircleIcon />
+                                {user.profile_picture ? (
+                                    <img
+                                        src={user.profile_picture}
+                                        alt="Profile"
+                                        className="w-8 h-8 rounded-full object-cover border-2 border-[#B32222]"
+                                    />
+                                ) : (
+                                    <AccountCircleIcon />
+                                )}
                                 <span>{user.display_name || user.name || user.email}</span>
                             </button>
                             {showUserMenu && (
                                 <div className="absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-lg border border-[#ECEEF0] py-2 z-50">
+                                    <button 
+                                        onClick={() => {
+                                            setShowUserMenu(false);
+                                            router.push("/profile");
+                                        }}
+                                        className="w-full flex items-center gap-2 px-4 py-2 text-left text-[#666666] hover:bg-[#F2DFDB] hover:text-[#B32222] transition-colors duration-400"
+                                    >
+                                        <SettingsIcon fontSize="small" />
+                                        <span>Profile Settings</span>
+                                    </button>
                                     <button 
                                         onClick={handleLogout}
                                         className="w-full flex items-center gap-2 px-4 py-2 text-left text-[#666666] hover:bg-[#F2DFDB] hover:text-[#B32222] transition-colors duration-400"
@@ -203,9 +222,27 @@ export default function Topbar() {
                         ) : user ? (
                             <>
                                 <div className="flex items-center gap-2 px-4 py-2 text-[#666666] font-semibold">
-                                    <AccountCircleIcon />
-                                    <span>{user.display_name || user.name || user.email}</span>
+                                    {user.profile_picture ? (
+                                        <img
+                                            src={user.profile_picture}
+                                            alt="Profile"
+                                            className="w-8 h-8 rounded-full object-cover border-2 border-[#B32222]"
+                                        />
+                                    ) : (
+                                        <AccountCircleIcon />
+                                    )}
+                                    <span className="truncate">{user.display_name || user.name || user.email}</span>
                                 </div>
+                                <button 
+                                    onClick={() => { 
+                                        router.push("/profile"); 
+                                        setIsMenuOpen(false); 
+                                    }}
+                                    className="w-full flex items-center justify-center gap-2 px-4 py-2 rounded-xl hover:bg-[#F2DFDB] transition-colors duration-400 font-semibold cursor-pointer"
+                                >
+                                    <SettingsIcon fontSize="small" />
+                                    <span>Profile Settings</span>
+                                </button>
                                 <button 
                                     onClick={handleLogout}
                                     className="w-full flex items-center justify-center gap-2 px-4 py-2 rounded-xl bg-[#B32222] text-white text-sm font-semibold shadow-sm transition-all duration-500 ease-out hover:shadow-lg hover:drop-shadow-[0_6px_12px_rgba(179,34,34,0.25)] cursor-pointer"
