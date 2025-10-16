@@ -107,8 +107,23 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     setUser(null);
   };
 
+  const refreshUser = async () => {
+    const { data: { session } } = await supabase.auth.getSession();
+    if (session?.user) {
+      setUser({
+        id: session.user.id,
+        email: session.user.email!,
+        display_name: session.user.user_metadata?.display_name || 
+                     session.user.user_metadata?.name ||
+                     session.user.user_metadata?.full_name,
+        name: session.user.user_metadata?.name,
+        profile_picture: session.user.user_metadata?.profile_picture,
+      });
+    }
+  };
+
   return (
-    <AuthContext.Provider value={{ user, loading, login, logout, setUser }}>
+    <AuthContext.Provider value={{ user, loading, login, logout, setUser, refreshUser }}>
       {children}
     </AuthContext.Provider>
   );

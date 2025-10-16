@@ -1,6 +1,6 @@
 "use client";
 
-import { useAuth } from "@/components/context/AuthContext";
+import { useAuth, supabase } from "@/components/context/AuthContext";
 import { useRouter } from "next/navigation";
 import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
@@ -14,7 +14,7 @@ import SaveIcon from '@mui/icons-material/Save';
 import CancelIcon from '@mui/icons-material/Cancel';
 
 export default function ProfilePage() {
-  const { user, loading, setUser } = useAuth();
+  const { user, loading, setUser, refreshUser } = useAuth();
   const router = useRouter();
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -180,41 +180,72 @@ export default function ProfilePage() {
   };
 
   const handleProfilePictureSubmit = async () => {
-    if (!profilePictureFile) return;
+    if (!profilePictureFile || !user) return;
 
     setError("");
     setSuccess("");
     setIsSubmitting(true);
 
     try {
-      const formData = new FormData();
-      formData.append("file", profilePictureFile);
-
-      const response = await fetch("/api/auth/update-profile-picture", {
-        method: "POST",
-        body: formData,
-      });
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        setError(data.error || "Failed to update profile picture");
+      // Validate file
+      if (!profilePictureFile.type.startsWith('image/')) {
+        setError("File must be an image");
         setIsSubmitting(false);
         return;
       }
 
-      // Update user context
-      if (user) {
-        setUser({
-          ...user,
-          profile_picture: data.profile_picture_url,
-        });
+      if (profilePictureFile.size > 5 * 1024 * 1024) {
+        setError("File size must be less than 5MB");
+        setIsSubmitting(false);
+        return;
       }
+
+      // Create unique filename
+      const fileExt = profilePictureFile.name.split('.').pop();
+      const fileName = `${user.id}-${Date.now()}.${fileExt}`;
+      const filePath = `profile-pictures/${fileName}`;
+
+      // Upload to Supabase Storage
+      const { data: uploadData, error: uploadError } = await supabase.storage
+        .from('avatars')
+        .upload(filePath, profilePictureFile, {
+          contentType: profilePictureFile.type,
+          upsert: true,
+        });
+
+      if (uploadError) {
+        console.error('Upload error:', uploadError);
+        setError(`Failed to upload image: ${uploadError.message}`);
+        setIsSubmitting(false);
+        return;
+      }
+
+      // Get public URL
+      const { data: { publicUrl } } = supabase.storage
+        .from('avatars')
+        .getPublicUrl(filePath);
+
+      // Update user metadata
+      const { error: updateError } = await supabase.auth.updateUser({
+        data: {
+          profile_picture: publicUrl,
+        }
+      });
+
+      if (updateError) {
+        setError(`Failed to update profile: ${updateError.message}`);
+        setIsSubmitting(false);
+        return;
+      }
+
+      // Refresh user data
+      await refreshUser();
 
       setSuccess("Profile picture updated successfully!");
       setProfilePictureFile(null);
-    } catch (err) {
-      setError("An error occurred. Please try again.");
+    } catch (err: any) {
+      console.error('Error:', err);
+      setError(err.message || "An error occurred. Please try again.");
     } finally {
       setIsSubmitting(false);
     }
