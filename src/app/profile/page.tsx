@@ -43,6 +43,13 @@ export default function ProfilePage() {
     }
   }, [user, loading, router]);
 
+  const handleProfileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setProfileData({
+      ...profileData,
+      [e.target.id]: e.target.value,
+    });
+  };
+
   const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPasswordData({
       ...passwordData,
@@ -73,6 +80,7 @@ export default function ProfilePage() {
         return;
       }
 
+      // Update user context
       if (user) {
         setUser({
           ...user,
@@ -156,8 +164,8 @@ export default function ProfilePage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#F9F5F1] py-24 px-6">
-      <div className="max-w-4xl mx-auto">
+    <div className="h-screen bg-[#F9F5F1] overflow-hidden flex items-center justify-center px-6">
+      <div className="max-w-4xl w-full max-h-[calc(100vh-2rem)] overflow-y-auto">
         <a
           href="/"
           className="flex items-center gap-2 hover:opacity-70 transition-opacity w-fit mb-6"
