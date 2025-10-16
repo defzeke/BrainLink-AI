@@ -43,13 +43,6 @@ export default function ProfilePage() {
     }
   }, [user, loading, router]);
 
-  const handleProfileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setProfileData({
-      ...profileData,
-      [e.target.id]: e.target.value,
-    });
-  };
-
   const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPasswordData({
       ...passwordData,
@@ -80,7 +73,6 @@ export default function ProfilePage() {
         return;
       }
 
-      // Update user context
       if (user) {
         setUser({
           ...user,
