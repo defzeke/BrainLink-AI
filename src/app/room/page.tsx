@@ -1,12 +1,10 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
-import { useRouter } from 'next/navigation';
-import { useAuth } from '@/components/context/AuthContext';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card } from '@/components/ui/card';
-import { Send, Trash2, Plus, Copy, User, Bot, History, Users, FileText, Brain, Loader2 } from 'lucide-react';
+import { Send, Trash2, Plus, Copy, User, Bot, History, Users, FileText, Brain } from 'lucide-react';
 
 interface Message {
   id: string;
@@ -22,8 +20,6 @@ interface ChatHistory {
 }
 
 export default function RoomPage() {
-  const { user, loading } = useAuth();
-  const router = useRouter();
   const [messages, setMessages] = useState<Message[]>([
     {
       id: '1',
@@ -43,12 +39,6 @@ export default function RoomPage() {
   ]);
   const [activeUsers, setActiveUsers] = useState(3);
   const messagesEndRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (!loading && !user) {
-      router.push('/login');
-    }
-  }, [user, loading, router]);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -116,18 +106,6 @@ export default function RoomPage() {
       }
     }
   };
-
-  if (loading) {
-    return (
-      <div className="flex h-screen items-center justify-center bg-gray-50">
-        <Loader2 className="w-8 h-8 animate-spin text-emerald-600" />
-      </div>
-    );
-  }
-
-  if (!user) {
-    return null;
-  }
 
   return (
     <div className="flex h-screen bg-gray-50">
