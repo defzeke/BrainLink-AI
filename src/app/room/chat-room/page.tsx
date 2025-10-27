@@ -30,7 +30,7 @@ export default function RoomPage() {
     { id: '3', title: '30-second commercial', preview: 'Generate a script for a 30-second commercial promoting our new product' },
     { id: '4', title: 'What is Artificial Intelligence?', preview: 'Tell me what is Artificial Intelligence?' },
   ]);
-  const [activeUsers, setActiveUsers] = useState(3);
+  const [activeUsers, setActiveUsers] = useState(1);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {
