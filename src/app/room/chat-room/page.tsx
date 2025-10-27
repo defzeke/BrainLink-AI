@@ -327,7 +327,7 @@ export default function RoomPage() {
               <p className="text-2xl font-bold mb-1">$126.54<span className="text-sm font-normal">/month</span></p>
               <p className="text-sm opacity-90 mb-4">Get various other interesting features</p>
               <Button className="w-full bg-black hover:bg-black/90 text-white">
-                Get Pro Plan Now
+                Donate
               </Button>
             </Card>
           </div>
