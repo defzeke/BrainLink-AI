@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { usePathname } from "next/navigation";
-import Topbar from "./sections/Topbar";
+import Topbar from "../sections/Topbar";
 
 export default function HideTopbar({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
