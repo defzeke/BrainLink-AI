@@ -325,7 +325,7 @@ export default function RoomPage() {
               </div>
               <h3 className="font-bold text-xl mb-1">Support Us!</h3>
               <p className="text-2xl font-bold mb-1">$126.54<span className="text-sm font-normal">/month</span></p>
-              <p className="text-sm opacity-90 mb-4">Get various other interesting features</p>
+              <p className="text-sm opacity-90 mb-4">Support us to keep BrainLink AI free and awesome</p>
               <Button className="w-full bg-black hover:bg-black/90 text-white">
                 Donate
               </Button>
