@@ -20,14 +20,7 @@ interface ChatHistory {
 }
 
 export default function RoomPage() {
-  const [messages, setMessages] = useState<Message[]>([
-    {
-      id: '1',
-      role: 'assistant',
-      content: 'Artificial Intelligence (AI) refers to intelligent computer systems that can learn, reason, and perform tasks that typically require human intelligence. It involves techniques like machine learning, natural language processing, and computer vision to analyze data, make decisions, and interact with humans. AI has applications in various fields and has the potential to revolutionize industries and improve efficiency and productivity.',
-      timestamp: new Date(),
-    },
-  ]);
+  const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [showHistory, setShowHistory] = useState(true);
