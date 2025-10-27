@@ -148,7 +148,7 @@ export default function RoomPage() {
               variant="default"
               size="sm"
               onClick={handleNewChat}
-              className="gap-2 bg-[#B42323] hover:bg-[#B42323]"
+              className="gap-2 bg-[#B42323] hover:bg-[#D33737]"
             >
               <Plus className="w-4 h-4" />
               New Chat
@@ -161,7 +161,7 @@ export default function RoomPage() {
           <div className="max-w-4xl mx-auto space-y-6">
             {messages.length === 0 ? (
               <div className="text-center py-12">
-                <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[#B42323] to-[#B42323] flex items-center justify-center mx-auto mb-4">
+                <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[#B42323] to-[#D33737] flex items-center justify-center mx-auto mb-4">
                   <Brain className="w-8 h-8 text-white" />
                 </div>
                 <h2 className="text-2xl font-bold mb-2">Welcome to BrainLink AI</h2>
@@ -176,7 +176,7 @@ export default function RoomPage() {
                   }`}
                 >
                   {message.role === 'assistant' && (
-                    <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#B42323] to-[#B42323] flex items-center justify-center flex-shrink-0">
+                    <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#B42323] to-[#D33737] flex items-center justify-center flex-shrink-0">
                       <Bot className="w-5 h-5 text-white" />
                     </div>
                   )}
@@ -319,7 +319,7 @@ export default function RoomPage() {
 
           {/* Pro Plan Card */}
           <div className="p-4 border-t">
-            <Card className="bg-gradient-to-br from-emerald-400 to-green-600 text-white p-6">
+            <Card className="bg-gradient-to-br from-[#B42323] to-[#D33737] text-white p-6">
               <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center mb-3">
                 <Brain className="w-6 h-6 text-white" />
               </div>
