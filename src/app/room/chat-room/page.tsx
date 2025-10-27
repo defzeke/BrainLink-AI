@@ -266,23 +266,23 @@ export default function RoomPage() {
               <Button
                 onClick={handleSendMessage}
                 disabled={isLoading || !input.trim()}
-                className="bg-emerald-600 hover:bg-emerald-700"
+                className="bg-[#B42323] hover:bg-[#D33737]"
               >
                 <Send className="w-4 h-4" />
               </Button>
             </div>
             <div className="flex items-center gap-4 mt-3 text-sm text-gray-600">
-              <button className="flex items-center gap-1 hover:text-emerald-600 transition-colors">
+              <button className="flex items-center gap-1 hover:text-[#B42323] transition-colors">
                 <FileText className="w-4 h-4" />
                 Browse Prompts
               </button>
-              <button className="flex items-center gap-1 hover:text-emerald-600 transition-colors">
+              <button className="flex items-center gap-1 hover:text-[#B42323] transition-colors">
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
                 </svg>
                 No Brand Voice
               </button>
-              <button className="flex items-center gap-1 hover:text-emerald-600 transition-colors ml-auto">
+              <button className="flex items-center gap-1 hover:text-[#B42323] transition-colors ml-auto">
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                 </svg>
