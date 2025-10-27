@@ -183,7 +183,7 @@ export default function RoomPage() {
                   <Card
                     className={`p-4 max-w-2xl ${
                       message.role === 'user'
-                        ? 'bg-emerald-600 text-white'
+                        ? 'bg-[#B42323] text-white'
                         : 'bg-white'
                     }`}
                   >
@@ -218,7 +218,7 @@ export default function RoomPage() {
             )}
             {isLoading && (
               <div className="flex gap-4">
-                <div className="w-8 h-8 rounded-full bg-gradient-to-br from-emerald-400 to-green-600 flex items-center justify-center">
+                <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#B42323] to-[#D33737] flex items-center justify-center">
                   <Bot className="w-5 h-5 text-white" />
                 </div>
                 <Card className="p-4 max-w-2xl">
