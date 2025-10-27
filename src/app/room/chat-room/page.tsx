@@ -114,7 +114,7 @@ export default function RoomPage() {
         {/* Header */}
         <div className="bg-white border-b px-6 py-4 flex items-center justify-between">
           <div className="flex items-center gap-4">
-            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#B42323] to-[#B42323] flex items-center justify-center">
+            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#B42323] to-[#D33737] flex items-center justify-center">
               <Brain className="w-6 h-6 text-white" />
             </div>
             <div>
@@ -323,7 +323,7 @@ export default function RoomPage() {
               <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center mb-3">
                 <Brain className="w-6 h-6 text-white" />
               </div>
-              <h3 className="font-bold text-xl mb-1">Pro Plan</h3>
+              <h3 className="font-bold text-xl mb-1">Support Us!</h3>
               <p className="text-2xl font-bold mb-1">$126.54<span className="text-sm font-normal">/month</span></p>
               <p className="text-sm opacity-90 mb-4">Get various other interesting features</p>
               <Button className="w-full bg-black hover:bg-black/90 text-white">
