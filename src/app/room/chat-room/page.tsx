@@ -114,7 +114,7 @@ export default function RoomPage() {
         {/* Header */}
         <div className="bg-white border-b px-6 py-4 flex items-center justify-between">
           <div className="flex items-center gap-4">
-            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-emerald-400 to-green-600 flex items-center justify-center">
+            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-red-400 to-green-600 flex items-center justify-center">
               <Brain className="w-6 h-6 text-white" />
             </div>
             <div>
